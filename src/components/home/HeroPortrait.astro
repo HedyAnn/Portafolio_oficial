@@ -43,7 +43,7 @@ const photo = Object.values(found)[0]?.default;
 
   <div class="note quote" aria-hidden="true">
     <span class="label">Entrevista</span>
-    <span class="quote-text">“¿Cómo voy contra la meta hoy?”</span>
+    <span class="quote-text">“Necesito saber si mi tienda va a llegar a la meta.”</span>
   </div>
 
   <div class="note flow" aria-hidden="true">
@@ -192,8 +192,8 @@ const photo = Object.values(found)[0]?.default;
     animation-delay: 200ms;
   }
   .sticky .hand { font-size: 1.35rem; line-height: 1.1; }
-  .quote { right: -6%; top: 30%; max-width: 190px; --r: 3deg; transform: rotate(var(--r)); animation-delay: 320ms; }
-  .quote-text { font-family: var(--font-display); font-size: 1.05rem; line-height: 1.25; }
+  .quote { right: -6%; top: 30%; max-width: 220px; --r: 3deg; transform: rotate(var(--r)); animation-delay: 320ms; }
+  .quote-text { font-family: var(--font-display); font-size: 1.05rem; line-height: 1.25; text-wrap: balance; }
   .flow { left: -8%; bottom: 13%; --r: -2deg; transform: rotate(var(--r)); animation-delay: 440ms; }
   .flow-row { display: flex; align-items: center; gap: 4px; }
   .node { padding: 3px 8px; border-radius: 999px; background: var(--surface-raised); font-size: 0.75rem; font-weight: 600; }
@@ -207,7 +207,7 @@ const photo = Object.values(found)[0]?.default;
 
   .scribble { position: absolute; font-size: 1.3rem; line-height: 1; color: var(--primary-text); white-space: nowrap; opacity: 0; animation: fade 400ms ease forwards; }
   .s-1 { left: -6%; top: 25%; transform: rotate(-6deg); animation-delay: 1100ms; }
-  .s-2 { right: -4%; top: 47%; transform: rotate(5deg); animation-delay: 1200ms; }
+  .s-2 { right: -4%; top: 51%; transform: rotate(5deg); animation-delay: 1200ms; }
   .s-3 { right: -2%; bottom: 23%; transform: rotate(-4deg); animation-delay: 1300ms; }
 
   @keyframes pop { from { opacity: 0; transform: rotate(var(--r, 0deg)) translateY(12px) scale(0.92); } to { opacity: 1; transform: rotate(var(--r, 0deg)); } }
