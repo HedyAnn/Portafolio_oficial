@@ -1,0 +1,33 @@
+---
+import { site, nav } from '../../site';
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container inner">
+    <div>
+      <p class="name">{site.name}</p>
+      <p class="muted">{site.role} · Santiago, Chile</p>
+    </div>
+    <nav aria-label="Pie de página">
+      <ul>
+        {nav.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+        <li><a href={site.cv} download>CV</a></li>
+        {site.linkedin && <li><a href={site.linkedin} rel="noopener noreferrer" target="_blank">LinkedIn</a></li>}
+        {site.behance && <li><a href={site.behance} rel="noopener noreferrer" target="_blank">Behance</a></li>}
+      </ul>
+    </nav>
+    <p class="muted small">© {year} {site.name}. Pantallas de proyectos con datos ficticios.</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer { border-top: 1px solid var(--border); padding-block: var(--space-8) var(--space-12); }
+  .inner { display: grid; gap: var(--space-6); }
+  @media (min-width: 760px) { .inner { grid-template-columns: 1fr auto; align-items: start; } .small { grid-column: 1 / -1; } }
+  .name { font-weight: 700; }
+  ul { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-6); list-style: none; margin: 0; padding: 0; }
+  a { color: var(--text-muted); text-decoration: none; }
+  a:hover { color: var(--primary-text); }
+  .small { font-size: 0.875rem; }
+</style>

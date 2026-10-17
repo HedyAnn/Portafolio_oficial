@@ -1,0 +1,78 @@
+/* Generado desde tokens.json — no editar a mano. */
+
+:root,
+[data-scheme='light'] {
+  color-scheme: light;
+  --bg: #fbf8ff;
+  --surface: #ffffff;
+  --surface-raised: #f3ecff;
+  --border: #e2d8f3;
+  --border-strong: #8f84aa;
+  --text: #1a1230;
+  --text-muted: #4f4569;
+  --text-subtle: #6f6589;
+  --primary: #c21f78;
+  --primary-hover: #a8186a;
+  --on-primary: #ffffff;
+  --primary-text: #b01a6c;
+  --accent: #6d3fe0;
+  --accent-text: #5b2fd0;
+  --focus: #8a1457;
+  --success: #167a4a;
+  --warning: #8a5a00;
+  --danger: #b3153a;
+  --shadow-card: 0 1px 2px rgba(26,18,48,0.06), 0 12px 32px rgba(26,18,48,0.08);
+  --shadow-glow: 0 0 0 1px rgba(194,31,120,0.35), 0 16px 40px rgba(194,31,120,0.18);
+}
+
+[data-scheme='dark'] {
+  color-scheme: dark;
+  --bg: #0f0b1a;
+  --surface: #171128;
+  --surface-raised: #221a38;
+  --border: #3a2e57;
+  --border-strong: #6e5f93;
+  --text: #f4eeff;
+  --text-muted: #b9aed3;
+  --text-subtle: #8a7fa6;
+  --primary: #e8409b;
+  --primary-hover: #f05fac;
+  --on-primary: #170a12;
+  --primary-text: #f27ab8;
+  --accent: #8b5cf6;
+  --accent-text: #ac8bfa;
+  --focus: #f7a8d0;
+  --success: #4ade9a;
+  --warning: #f5c26b;
+  --danger: #ff7b96;
+  --shadow-card: 0 1px 0 rgba(255,255,255,0.04) inset, 0 12px 32px rgba(0,0,0,0.35);
+  --shadow-glow: 0 0 0 1px rgba(232,64,155,0.45), 0 16px 48px rgba(232,64,155,0.28);
+}
+
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-24: 96px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+  --gradient-brand: linear-gradient(135deg, #e8409b 0%, #8b5cf6 100%);
+  --gradient-glow: radial-gradient(60% 60% at 70% 30%, rgba(232,64,155,0.35) 0%, rgba(139,92,246,0.18) 45%, rgba(15,11,26,0) 75%);
+  --duration-fast: 160ms;
+  --duration-base: 260ms;
+  --duration-slow: 480ms;
+  --duration-ambient: 24s;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --font-display: "Fraunces Variable", "Fraunces", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans Variable", "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", "JetBrains Mono", ui-monospace, monospace;
+}

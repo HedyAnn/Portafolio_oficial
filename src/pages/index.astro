@@ -1,0 +1,172 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroPortrait from '../components/home/HeroPortrait.astro';
+import CaseCard from '../components/case/CaseCard.astro';
+import ProcessExplorer from '../components/home/ProcessExplorer.astro';
+import { site } from '../site';
+
+// Inicio: el proyecto insignia + los 6 siguientes por orden; el resto en /casos/
+const all = (await getCollection('cases')).sort((a, b) => a.data.order - b.data.order);
+const [flagship, ...rest] = all.slice(0, 7);
+const total = all.length;
+
+---
+
+<BaseLayout>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <p class="hello">Hola, soy Hedy.</p>
+        <h1 id="hero-title" class="display">Diseño productos de datos que se entienden a la primera.</h1>
+        <p class="lead">
+          Product Designer en una plataforma de analítica para retail físico. Convierto reglas de negocio complejas en
+          dashboards, flujos y especificaciones que los equipos pueden construir.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#casos">Ver proyectos</a>
+          <a class="btn btn-secondary" href={site.cv} download>{site.cvLabel}</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <HeroPortrait />
+      </div>
+    </div>
+  </section>
+
+  <section id="casos" class="section section-after-hero" data-spy="casos" aria-labelledby="casos-title">
+    <div class="container">
+      <header class="section-head">
+        <h2 id="casos-title" class="h1">Proyectos</h2>
+        <p class="lead">Productos de datos, dashboards y procesos UX completos. Cada proyecto empieza por el problema y muestra las decisiones que tomé.</p>
+      </header>
+      {flagship && <CaseCard entry={flagship} wide />}
+      <div class="case-grid">
+        {rest.map((entry) => <CaseCard entry={entry} />)}
+      </div>
+      <p class="more"><a class="link" href="/casos/">Ver los {total} proyectos</a></p>
+    </div>
+  </section>
+
+  <section class="section process" aria-labelledby="proceso-title">
+    <div class="container">
+      <header class="section-head">
+        <h2 id="proceso-title" class="h1">Cómo trabajo</h2>
+        <p class="lead">
+          Sigo el proceso completo de UX/UI, del discovery a la entrega, y lo ajusto al tamaño de cada proyecto. Cuando la
+          evidencia lo pide, vuelvo a una etapa anterior.
+        </p>
+      </header>
+      <ProcessExplorer />
+    </div>
+  </section>
+
+  <section class="section" data-spy="sobre" aria-labelledby="sobre-title">
+    <div class="container about">
+      <div>
+        <h2 id="sobre-title" class="h1">De UX/UI a Product Design</h2>
+        <p class="lead">
+          Empecé diseñando interfaces y hoy también defino modelos de datos, reglas de negocio y prioridades junto al
+          equipo de producto. Vengo además de la programación y la ciberseguridad, y eso se nota en cómo pienso los
+          sistemas.
+        </p>
+        <p class="more"><a class="link" href="/sobre-mi/">Conocer mi trayectoria</a></p>
+      </div>
+      <dl class="facts">
+        <div><dt>Hoy</dt><dd>Product Designer UX/UI en SaaS de analítica para retail</dd></div>
+        <div><dt>Formación</dt><dd>Diplomado UX/UI (Coderhouse), UX de Google, Diplomado en Ciberseguridad</dd></div>
+        <div><dt>Herramientas</dt><dd>Figma, FigJam, Maze, Python, HTML/CSS/JS, Claude</dd></div>
+        <div><dt>Idiomas</dt><dd>Español nativo, inglés C1</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section contact" data-spy="contacto" aria-labelledby="contacto-title">
+    <div class="container contact-inner">
+      <h2 id="contacto-title" class="display contact-title">¿Conversamos?</h2>
+      <p class="lead">Busco roles de Product Designer en productos de datos. Respondo en uno o dos días hábiles.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href={`mailto:${site.email}`}>Escribirme un correo</a>
+        {site.linkedin && <a class="btn btn-secondary" href={site.linkedin} target="_blank" rel="noopener noreferrer">Ver LinkedIn</a>}
+        <a class="btn btn-quiet" href={site.cv} download>Descargar CV</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* ---------- Hero ---------- */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    margin-top: -88px;
+    padding-block: calc(88px + var(--space-8)) var(--space-8);
+  }
+  /* Halo de ambiente: único movimiento continuo del sitio, muy lento */
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: -30% -20% auto auto;
+    width: 80vw;
+    max-width: 900px;
+    aspect-ratio: 1;
+    background: var(--gradient-glow);
+    filter: blur(20px);
+    pointer-events: none;
+    z-index: -1;
+  }
+  .hero-grid { display: grid; gap: var(--space-12); align-items: center; }
+  @media (min-width: 960px) {
+    .hero { padding-block: calc(88px + var(--space-12)) var(--space-8); }
+    .hero-grid { grid-template-columns: 1.15fr 1fr; gap: var(--space-16); }
+  }
+  .hero-copy { display: grid; gap: var(--space-5, 20px); }
+  .hello { color: var(--primary-text); font-weight: 600; }
+  .hero h1 { max-width: 13ch; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-2); }
+  .hero-visual { max-width: 620px; width: 100%; justify-self: center; }
+
+  /* Entrada orquestada: un solo momento al cargar */
+  .hero-copy > * { animation: rise var(--duration-slow) var(--ease-out) both; }
+  .hero-copy > :nth-child(2) { animation-delay: 60ms; }
+  .hero-copy > :nth-child(3) { animation-delay: 120ms; }
+  .hero-copy > :nth-child(4) { animation-delay: 180ms; }
+  @keyframes rise { from { opacity: 0; transform: translateY(14px); } }
+
+  /* ---------- Secciones ---------- */
+  .section-after-hero { padding-top: var(--space-8); }
+  .section-head { display: grid; gap: var(--space-3); margin-bottom: var(--space-8); }
+  .case-grid { display: grid; gap: var(--space-6); margin-top: var(--space-6); }
+  @media (min-width: 760px) { .case-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1100px) { .case-grid { grid-template-columns: repeat(3, 1fr); } }
+  .more { margin-top: var(--space-6); }
+
+  /* ---------- Proceso ---------- */
+  .process {
+    background:
+      radial-gradient(60% 50% at 0% 0%, color-mix(in oklab, var(--accent) 8%, transparent), transparent 70%),
+      radial-gradient(50% 50% at 100% 100%, color-mix(in oklab, var(--primary) 7%, transparent), transparent 70%);
+  }
+  /* ---------- Sobre mí ---------- */
+  .about { display: grid; gap: var(--space-12); }
+  @media (min-width: 900px) { .about { grid-template-columns: 1.2fr 1fr; align-items: start; } }
+  .about .lead { margin-top: var(--space-4); }
+  .facts { margin: 0; display: grid; gap: var(--space-4); }
+  .facts div { padding-bottom: var(--space-4); border-bottom: 1px solid var(--border); }
+  .facts dt { color: var(--text-subtle); font-size: 0.875rem; }
+  .facts dd { margin: var(--space-1) 0 0; font-weight: 500; }
+
+  /* ---------- Contacto ---------- */
+  .contact-inner {
+    display: grid;
+    gap: var(--space-6);
+    padding: var(--space-12) var(--space-6);
+    border-radius: var(--radius-lg);
+    background:
+      radial-gradient(120% 140% at 100% 0%, color-mix(in oklab, var(--primary) 26%, transparent), transparent 60%),
+      radial-gradient(100% 120% at 0% 100%, color-mix(in oklab, var(--accent) 22%, transparent), transparent 60%),
+      var(--surface);
+  }
+  @media (min-width: 760px) { .contact-inner { padding: var(--space-16); } }
+  .contact-title { font-size: clamp(2.5rem, 6vw, 4.5rem); }
+</style>

@@ -1,0 +1,368 @@
+---
+// "Cómo trabajo": explorador del proceso UX/UI.
+// Escritorio con JS: pestañas verticales + panel de detalle con una ilustración por etapa.
+// Sin JS o en móvil: las seis etapas se muestran apiladas, todas legibles.
+const phases = [
+  {
+    id: 'discovery',
+    name: 'Discovery',
+    title: 'Entiendo el problema y el negocio',
+    text: 'Me reúno con clientes, operaciones y stakeholders para entender qué decisión necesita tomar cada persona, con qué datos y qué métrica tiene que moverse.',
+    methods: ['Entrevistas a stakeholders', 'Mapa de contexto', 'Métricas de éxito'],
+    output: ['Brief del problema', 'Mapa de actores', 'Métricas de éxito'],
+  },
+  {
+    id: 'investigacion',
+    name: 'Investigación',
+    title: 'Busco evidencia antes de diseñar',
+    text: 'Entrevisto y observo a quienes usan el producto, reviso datos de uso y analizo a la competencia. Lo sintetizo en hallazgos accionables.',
+    methods: ['Entrevistas a usuarios', 'Análisis de datos de uso', 'Benchmark'],
+    output: ['Síntesis de hallazgos', 'Personas', 'Customer journey'],
+  },
+  {
+    id: 'definicion',
+    name: 'Definición',
+    title: 'Defino qué se construye y por qué',
+    text: 'Convierto los hallazgos en alcance, flujos, arquitectura de información, modelo de datos y especificación funcional, junto al equipo de producto.',
+    methods: ['User flows', 'Arquitectura de información', 'Modelado de datos'],
+    output: ['Flujos', 'Especificación funcional', 'Criterios de aceptación'],
+  },
+  {
+    id: 'diseno',
+    name: 'Diseño',
+    title: 'Exploro y diseño la solución',
+    text: 'Paso de wireframes a interfaces de alta fidelidad en Figma, con el sistema de diseño como base y cada decisión documentada.',
+    methods: ['Wireframes', 'Exploración de alternativas', 'Sistema de diseño'],
+    output: ['Wireframes', 'UI de alta fidelidad', 'Componentes'],
+  },
+  {
+    id: 'validacion',
+    name: 'Validación',
+    title: 'Pruebo con personas reales',
+    text: 'Armo prototipos en Figma o en código, según lo que haya que validar, y hago pruebas de usabilidad para corregir antes de desarrollar.',
+    methods: ['Prototipos', 'Pruebas de usabilidad', 'Maze'],
+    output: ['Prototipo navegable', 'Informe de usabilidad', 'Ajustes priorizados'],
+  },
+  {
+    id: 'entrega',
+    name: 'Entrega',
+    title: 'Acompaño hasta producción',
+    text: 'Hago el handoff, resuelvo dudas durante el sprint, reviso la implementación y mido el resultado para la siguiente iteración.',
+    methods: ['Handoff', 'QA de diseño', 'Seguimiento de métricas'],
+    output: ['Specs para desarrollo', 'Revisión de implementación', 'Aprendizajes'],
+  },
+];
+---
+
+<div class="explorer" data-explorer>
+  <div class="tabs" role="tablist" aria-label="Etapas del proceso" aria-orientation="vertical" data-tablist hidden>
+    <span class="rail" aria-hidden="true"><span class="rail-fill" data-rail></span></span>
+    {phases.map((p, i) => (
+      <button
+        class="tab"
+        type="button"
+        role="tab"
+        id={`tab-${p.id}`}
+        aria-controls={`panel-${p.id}`}
+        aria-selected={i === 0 ? 'true' : 'false'}
+        tabindex={i === 0 ? 0 : -1}
+      >
+        <span class="tab-num" aria-hidden="true">{i + 1}</span>
+        <span class="tab-text">
+          <span class="tab-name">{p.name}</span>
+          <span class="tab-title">{p.title}</span>
+        </span>
+      </button>
+    ))}
+  </div>
+
+  <div class="panels">
+    {phases.map((p, i) => (
+      <div class="panel" id={`panel-${p.id}`} role="tabpanel" aria-labelledby={`tab-${p.id}`} data-panel>
+        <div class="panel-copy">
+          <p class="panel-phase"><span class="panel-num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>{p.name}</p>
+          <h3 class="panel-title">{p.title}</h3>
+          <p class="panel-text">{p.text}</p>
+          <div class="panel-cols">
+            <div>
+              <h4 class="col-label">Cómo lo hago</h4>
+              <ul class="chips">{p.methods.map((m) => <li>{m}</li>)}</ul>
+            </div>
+            <div>
+              <h4 class="col-label">Qué entrego</h4>
+              <ul class="checks">{p.output.map((o) => <li>{o}</li>)}</ul>
+            </div>
+          </div>
+        </div>
+        <div class="art" aria-hidden="true">
+          {p.id === 'discovery' && (
+            <svg viewBox="0 0 320 240">
+              <rect x="36" y="40" width="74" height="64" rx="10" class="note n1" />
+              <rect x="124" y="28" width="74" height="64" rx="10" class="note n2" />
+              <rect x="212" y="46" width="74" height="64" rx="10" class="note n3" />
+              <rect x="70" y="124" width="74" height="64" rx="10" class="note n2" />
+              <rect x="166" y="132" width="74" height="64" rx="10" class="note n1" />
+              <g class="lines"><path d="M50 62h46M50 76h32" /><path d="M138 50h46M138 64h30" /><path d="M226 68h46M226 82h36" /><path d="M84 146h46M84 160h28" /><path d="M180 154h46M180 168h34" /></g>
+            </svg>
+          )}
+          {p.id === 'investigacion' && (
+            <svg viewBox="0 0 320 240">
+              <path d="M40 46h170a14 14 0 0 1 14 14v52a14 14 0 0 1-14 14H92l-26 22v-22H40a14 14 0 0 1-14-14V60a14 14 0 0 1 14-14Z" class="bubble b1" />
+              <path d="M280 120H124a14 14 0 0 0-14 14v46a14 14 0 0 0 14 14h120l26 20v-20h10a14 14 0 0 0 14-14v-46a14 14 0 0 0-14-14Z" class="bubble b2" />
+              <g class="lines"><path d="M48 72h140M48 88h110M48 104h70" /><path d="M134 146h130M134 162h96M134 178h60" /></g>
+              <circle cx="262" cy="64" r="22" class="dot-acc" />
+            </svg>
+          )}
+          {p.id === 'definicion' && (
+            <svg viewBox="0 0 320 240">
+              <g class="flow-lines"><path d="M92 62h44" /><path d="M200 62h30v44" /><path d="M230 160v14H200" /><path d="M136 174H92" /></g>
+              <rect x="28" y="40" width="64" height="44" rx="12" class="box b-pri" />
+              <rect x="136" y="40" width="64" height="44" rx="12" class="box" />
+              <path d="M230 106l30 27-30 27-30-27Z" class="box b-acc" />
+              <rect x="136" y="152" width="64" height="44" rx="12" class="box" />
+              <rect x="28" y="152" width="64" height="44" rx="12" class="box b-pri" />
+            </svg>
+          )}
+          {p.id === 'diseno' && (
+            <svg viewBox="0 0 320 240">
+              <rect x="40" y="24" width="240" height="192" rx="16" class="frame" />
+              <rect x="40" y="24" width="240" height="30" rx="16" class="frame-bar" />
+              <rect x="60" y="72" width="96" height="70" rx="10" class="img" />
+              <g class="lines"><path d="M172 80h88M172 96h70M172 112h80M60 162h200M60 178h150" /></g>
+              <rect x="172" y="124" width="64" height="20" rx="10" class="pill" />
+            </svg>
+          )}
+          {p.id === 'validacion' && (
+            <svg viewBox="0 0 320 240">
+              <rect x="106" y="16" width="108" height="212" rx="22" class="frame" />
+              <rect x="122" y="44" width="76" height="46" rx="10" class="img" />
+              <g class="lines"><path d="M122 106h76M122 120h54" /></g>
+              <rect x="122" y="168" width="76" height="26" rx="13" class="pill" />
+              <circle cx="160" cy="181" r="24" class="heat h1" />
+              <circle cx="152" cy="70" r="16" class="heat h2" />
+              <circle cx="254" cy="72" r="24" class="ok" />
+              <path d="M243 72l8 8 14-15" class="ok-mark" />
+            </svg>
+          )}
+          {p.id === 'entrega' && (
+            <svg viewBox="0 0 320 240">
+              <rect x="48" y="34" width="224" height="172" rx="16" class="frame" />
+              {[0, 1, 2].map((r) => (
+                <g>
+                  <rect x="72" y={62 + r * 46} width="24" height="24" rx="7" class={r < 2 ? 'chk on' : 'chk'} />
+                  {r < 2 && <path d={`M78 ${74 + r * 46}l5 5 9-10`} class="chk-mark" />}
+                  <path d={`M112 ${70 + r * 46}h120M112 ${82 + r * 46}h80`} class="lines-p" />
+                </g>
+              ))}
+            </svg>
+          )}
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+<script is:inline src="/js/process.js" defer></script>
+
+<style>
+  .explorer { display: grid; gap: var(--space-6); }
+
+  /* ---------- Panel (sin JS y en móvil: todos apilados) ---------- */
+  .panels { display: grid; gap: var(--space-4); }
+  .panel {
+    display: grid;
+    gap: var(--space-6);
+    padding: var(--space-6);
+    border-radius: var(--radius-lg);
+    background: var(--surface);
+    box-shadow: var(--shadow-card);
+    border: 1px solid color-mix(in oklab, var(--border) 70%, transparent);
+  }
+  .panel-copy { display: grid; gap: var(--space-4); align-content: start; }
+  .panel-phase {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+    color: var(--primary-text);
+    font-weight: 600;
+  }
+  .panel-num {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-variant-numeric: tabular-nums;
+    color: var(--text-subtle);
+  }
+  .panel-title {
+    font-family: var(--font-display);
+    font-weight: 450;
+    font-size: clamp(1.625rem, 2.6vw, 2.125rem);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    font-variation-settings: 'opsz' 72, 'SOFT' 100;
+  }
+  .panel-text { color: var(--text-muted); font-size: 1.0625rem; max-width: 52ch; }
+  .panel-cols { display: grid; gap: var(--space-5, 20px); margin-top: var(--space-2); }
+  
+  .col-label { margin: 0 0 var(--space-3); font-size: 0.875rem; font-weight: 600; color: var(--text-subtle); }
+  .chips { display: flex; flex-wrap: wrap; gap: var(--space-2); list-style: none; margin: 0; padding: 0; }
+  .chips li {
+    padding: 6px var(--space-3);
+    border-radius: var(--radius-pill);
+    background: color-mix(in oklab, var(--accent) 10%, var(--surface));
+    color: var(--accent-text);
+    font-size: 0.875rem;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .checks { display: grid; gap: var(--space-2); list-style: none; margin: 0; padding: 0; }
+  .checks li { display: flex; align-items: center; gap: var(--space-2); font-size: 0.9375rem; }
+  .checks li::before {
+    content: '';
+    flex: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cpath d='M5 9.5l2.6 2.6L13 6.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 18px no-repeat,
+      var(--gradient-brand);
+  }
+
+  /* ---------- Ilustraciones ---------- */
+  .art {
+    display: grid;
+    place-items: center;
+    border-radius: var(--radius-md);
+    background:
+      radial-gradient(80% 90% at 80% 10%, color-mix(in oklab, var(--primary) 12%, transparent), transparent 70%),
+      radial-gradient(70% 80% at 10% 100%, color-mix(in oklab, var(--accent) 12%, transparent), transparent 70%),
+      var(--surface-raised);
+    min-height: 220px;
+    overflow: hidden;
+  }
+  .art svg { width: min(100%, 360px); height: auto; }
+  .note { stroke: none; }
+  .n1 { fill: color-mix(in oklab, var(--primary) 32%, var(--surface)); transform: rotate(-3deg); transform-box: fill-box; transform-origin: center; }
+  .n2 { fill: color-mix(in oklab, var(--accent) 32%, var(--surface)); transform: rotate(2deg); transform-box: fill-box; transform-origin: center; }
+  .n3 { fill: var(--surface); stroke: var(--border-strong); stroke-width: 1.5; }
+  .lines path, .lines-p { fill: none; stroke: var(--text-subtle); stroke-width: 5; stroke-linecap: round; opacity: 0.45; }
+  .bubble { stroke: none; }
+  .b1 { fill: var(--surface); stroke: var(--border-strong); stroke-width: 1.5; }
+  .b2 { fill: color-mix(in oklab, var(--primary) 30%, var(--surface)); }
+  .dot-acc { fill: var(--accent); opacity: 0.8; }
+  .flow-lines path { fill: none; stroke: var(--border-strong); stroke-width: 2.5; stroke-dasharray: 5 5; }
+  .box { fill: var(--surface); stroke: var(--border-strong); stroke-width: 1.5; }
+  .b-pri { fill: color-mix(in oklab, var(--primary) 45%, var(--surface)); stroke: none; }
+  .b-acc { fill: color-mix(in oklab, var(--accent) 50%, var(--surface)); stroke: none; }
+  .frame { fill: var(--surface); stroke: var(--border-strong); stroke-width: 1.5; }
+  .frame-bar { fill: color-mix(in oklab, var(--accent) 14%, var(--surface)); }
+  .img { fill: color-mix(in oklab, var(--accent) 35%, var(--surface)); }
+  .pill { fill: var(--primary); }
+  .heat { fill: var(--primary); }
+  .h1 { opacity: 0.28; }
+  .h2 { opacity: 0.18; }
+  .ok { fill: var(--success); opacity: 0.9; }
+  .ok-mark, .chk-mark { fill: none; stroke: white; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+  .chk { fill: var(--surface-raised); stroke: var(--border-strong); stroke-width: 1.5; }
+  .chk.on { fill: var(--primary); stroke: none; }
+
+  /* ---------- Modo pestañas (con JS) ---------- */
+  /* Móvil: fila de etapas desplazable + un panel a la vez, sin ilustración */
+  .explorer[data-ready] .tabs {
+    display: flex;
+    gap: var(--space-2);
+    padding: 2px 2px var(--space-2);
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+  }
+  .explorer[data-ready] .tabs::-webkit-scrollbar { display: none; }
+  .explorer[data-ready] .rail, .explorer[data-ready] .tab::before { display: none; }
+  .explorer[data-ready] .tab { width: auto; min-height: 44px; flex: none; scroll-snap-align: start; border-radius: var(--radius-pill); padding: var(--space-1) var(--space-4) var(--space-1) var(--space-1); }
+  .explorer[data-ready] .tab-title { display: none; }
+  .explorer[data-ready] .panel[hidden] { display: none; }
+  .explorer[data-ready] .panel:not([hidden]) { animation: panel-in 320ms var(--ease-out); }
+  @media (max-width: 959px) { .explorer[data-ready] .art { display: none; } }
+
+  /* Escritorio: pestañas verticales sobre un riel + panel con ilustración */
+  @media (min-width: 960px) {
+    .explorer[data-ready] { grid-template-columns: minmax(280px, 0.8fr) 2fr; gap: var(--space-8); align-items: start; }
+    .explorer[data-ready] .tabs { display: grid; gap: var(--space-1); padding: 0 0 0 22px; overflow: visible; }
+    .explorer[data-ready] .rail, .explorer[data-ready] .tab::before { display: block; }
+    .explorer[data-ready] .tab { width: 100%; min-height: 64px; padding: var(--space-3) var(--space-4); border-radius: var(--radius-md); }
+    .explorer[data-ready] .tab-title { display: block; }
+    .explorer[data-ready] .panels { display: block; }
+    .explorer[data-ready] .panel { grid-template-columns: 1.3fr 1fr; align-items: stretch; padding: var(--space-8); min-height: 608px; }
+  }
+  @keyframes panel-in { from { opacity: 0; transform: translateY(8px); } }
+
+  .tabs { position: relative; }
+  .tabs[hidden] { display: none !important; }
+  .rail {
+    position: absolute;
+    left: 6px;
+    top: 32px;
+    bottom: 32px;
+    width: 3px;
+    border-radius: 3px;
+    background: var(--border);
+    overflow: hidden;
+  }
+  .rail-fill {
+    position: absolute;
+    inset: 0;
+    background: var(--gradient-brand);
+    transform-origin: top;
+    transform: scaleY(var(--p, 0));
+    transition: transform 420ms var(--ease-out);
+  }
+  .tab {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    width: 100%;
+    min-height: 64px;
+    padding: var(--space-3) var(--space-4);
+    border: 0;
+    border-radius: var(--radius-md);
+    background: transparent;
+    color: var(--text-muted);
+    text-align: left;
+    font: inherit;
+    cursor: pointer;
+    transition: background-color var(--duration-base) var(--ease-out), color var(--duration-fast) var(--ease-out);
+  }
+  .tab:hover { background: color-mix(in oklab, var(--surface) 70%, transparent); color: var(--text); }
+  .tab[aria-selected='true'] { background: var(--surface); color: var(--text); box-shadow: var(--shadow-card); }
+  /* El punto sobre el riel marca la etapa */
+  .tab::before {
+    content: '';
+    position: absolute;
+    left: -20.5px;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2.5px solid var(--border-strong);
+    transition: border-color var(--duration-base) var(--ease-out), transform var(--duration-base) var(--ease-spring);
+  }
+  .tab.done::before { border-color: var(--primary); }
+  .tab[aria-selected='true']::before { border-color: var(--primary); background: var(--primary); transform: scale(1.25); }
+  .tab-num {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-pill);
+    background: var(--surface-raised);
+    color: var(--text-muted);
+    font-weight: 700;
+    font-size: 0.875rem;
+    font-variant-numeric: tabular-nums;
+    transition: background-color var(--duration-base) var(--ease-out), color var(--duration-base) var(--ease-out);
+  }
+  .tab[aria-selected='true'] .tab-num { background: var(--primary); color: var(--on-primary); }
+  .tab-text { display: grid; gap: 2px; min-width: 0; }
+  .tab-name { font-weight: 600; color: inherit; }
+  .tab-title { font-size: 0.8125rem; color: var(--text-subtle); }
+</style>
