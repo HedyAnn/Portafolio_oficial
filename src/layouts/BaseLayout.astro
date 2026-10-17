@@ -4,7 +4,7 @@ import '@fontsource-variable/plus-jakarta-sans/index.css';
 import '../styles/global.css';
 import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
-import { site } from '../site';
+import { site, withBase } from '../site';
 
 interface Props {
   title?: string;
@@ -24,14 +24,14 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href={withBase('/favicon.svg')} type="image/svg+xml" />
     <meta name="theme-color" content="#fbf8ff" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:locale" content="es_CL" />
-    <script is:inline src="/theme-init.js"></script>
+    <script is:inline src={withBase('/theme-init.js')}></script>
   </head>
   <body>
     <a class="skip-link" href="#contenido">Saltar al contenido</a>
@@ -40,7 +40,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
       <slot />
     </main>
     <Footer />
-    <script is:inline src="/js/theme-toggle.js" defer></script>
+    <script is:inline src={withBase('/js/theme-toggle.js')} defer></script>
   </body>
 </html>
 

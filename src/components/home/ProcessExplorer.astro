@@ -1,4 +1,5 @@
 ---
+import { withBase } from '../../site';
 // "Cómo trabajo": explorador del proceso UX/UI.
 // Escritorio con JS: pestañas verticales + panel de detalle con una ilustración por etapa.
 // Sin JS o en móvil: las seis etapas se muestran apiladas, todas legibles.
@@ -161,7 +162,7 @@ const phases = [
     ))}
   </div>
 </div>
-<script is:inline src="/js/process.js" defer></script>
+<script is:inline src={withBase('/js/process.js')} defer></script>
 
 <style>
   .explorer { display: grid; gap: var(--space-6); }

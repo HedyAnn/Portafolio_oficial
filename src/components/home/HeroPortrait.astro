@@ -38,7 +38,7 @@ const photo = Object.values(found)[0]?.default;
   </svg>
 
   <div class="note sticky" aria-hidden="true">
-    <span class="hand">¿Qué decisión tiene que tomar?</span>
+    <span class="hand">¿Qué problema resolvemos<br />y para quién?</span>
   </div>
 
   <div class="note quote" aria-hidden="true">
@@ -181,7 +181,7 @@ const photo = Object.values(found)[0]?.default;
   .sticky {
     left: -10%;
     top: 4%;
-    width: 168px;
+    width: max-content;
     padding: var(--space-4);
     border: 0;
     border-radius: 6px 6px 18px 6px;
@@ -206,7 +206,7 @@ const photo = Object.values(found)[0]?.default;
   .note:hover { transform: rotate(0deg) translateY(-3px); }
 
   .scribble { position: absolute; font-size: 1.3rem; line-height: 1; color: var(--primary-text); white-space: nowrap; opacity: 0; animation: fade 400ms ease forwards; }
-  .s-1 { left: -6%; top: 22%; transform: rotate(-6deg); animation-delay: 1100ms; }
+  .s-1 { left: -6%; top: 25%; transform: rotate(-6deg); animation-delay: 1100ms; }
   .s-2 { right: -4%; top: 47%; transform: rotate(5deg); animation-delay: 1200ms; }
   .s-3 { right: -2%; bottom: 23%; transform: rotate(-4deg); animation-delay: 1300ms; }
 
@@ -217,7 +217,7 @@ const photo = Object.values(found)[0]?.default;
   @media (max-width: 640px) {
     .frame { width: 72%; }
     .flow, .scribble, .sketch { display: none; }
-    .sticky { left: 0; width: 140px; padding: var(--space-3); }
+    .sticky { left: 0; width: max-content; padding: var(--space-3); }
     .quote { right: 0; }
     .test { right: 0; }
     .sticky .hand { font-size: 1.15rem; }

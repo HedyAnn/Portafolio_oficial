@@ -1,7 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { site } from '../../site';
+import { site, withBase } from '../../site';
 
 export async function getStaticPaths() {
   const cases = (await getCollection('cases')).sort((a, b) => a.data.order - b.data.order);
@@ -20,7 +20,7 @@ const originLabel = origin === 'FollowUP' ? 'SaaS de analítica retail' : origin
 <BaseLayout title={title} description={summary}>
   <article class="section">
     <div class="container">
-      <nav class="crumbs" aria-label="Ruta"><a href="/casos/">Proyectos</a> / <span aria-current="page">{title}</span></nav>
+      <nav class="crumbs" aria-label="Ruta"><a href={withBase('/casos/')}>Proyectos</a> / <span aria-current="page">{title}</span></nav>
       <header class="case-head">
         <h1 class="h1">{title}</h1>
         <p class="lead">{summary}</p>
@@ -36,7 +36,7 @@ const originLabel = origin === 'FollowUP' ? 'SaaS de analítica retail' : origin
       </div>
       <footer class="case-foot">
         <a class="btn btn-primary" href={`mailto:${site.email}`}>Conversemos sobre este proyecto</a>
-        {next && next.id !== entry.id && <a class="btn btn-secondary" href={`/casos/${next.id}/`}>Siguiente proyecto: {next.data.title}</a>}
+        {next && next.id !== entry.id && <a class="btn btn-secondary" href={withBase(`/casos/${next.id}/`)}>Siguiente proyecto: {next.data.title}</a>}
       </footer>
     </div>
   </article>

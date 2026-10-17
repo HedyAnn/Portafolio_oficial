@@ -4,7 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroPortrait from '../components/home/HeroPortrait.astro';
 import CaseCard from '../components/case/CaseCard.astro';
 import ProcessExplorer from '../components/home/ProcessExplorer.astro';
-import { site } from '../site';
+import { site, withBase } from '../site';
 
 // Inicio: el proyecto insignia + los 6 siguientes por orden; el resto en /casos/
 const all = (await getCollection('cases')).sort((a, b) => a.data.order - b.data.order);
@@ -44,7 +44,7 @@ const total = all.length;
       <div class="case-grid">
         {rest.map((entry) => <CaseCard entry={entry} />)}
       </div>
-      <p class="more"><a class="link" href="/casos/">Ver los {total} proyectos</a></p>
+      <p class="more"><a class="link" href={withBase('/casos/')}>Ver los {total} proyectos</a></p>
     </div>
   </section>
 
@@ -70,7 +70,7 @@ const total = all.length;
           equipo de producto. Vengo además de la programación y la ciberseguridad, y eso se nota en cómo pienso los
           sistemas.
         </p>
-        <p class="more"><a class="link" href="/sobre-mi/">Conocer mi trayectoria</a></p>
+        <p class="more"><a class="link" href={withBase('/sobre-mi/')}>Conocer mi trayectoria</a></p>
       </div>
       <dl class="facts">
         <div><dt>Hoy</dt><dd>Product Designer UX/UI en SaaS de analítica para retail</dd></div>

@@ -1,4 +1,5 @@
 ---
+import { withBase } from '../../site';
 // Hero interactivo: 150 puntos de datos sueltos que se ordenan en un gráfico de metas.
 // Cada punto es un vendedor; cada columna, una tienda (datos ficticios).
 // El script vive en /public/js/hero-units.js para cumplir la CSP (sin scripts en línea).
@@ -17,7 +18,7 @@
     </button>
   </div>
 </figure>
-<script is:inline src="/js/hero-units.js" defer></script>
+<script is:inline src={withBase('/js/hero-units.js')} defer></script>
 
 <style>
   .units { margin: 0; display: grid; gap: var(--space-4); }
