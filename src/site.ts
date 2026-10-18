@@ -8,7 +8,7 @@ export const site = {
   description:
     'Portafolio de Hedy Herrada, Product Designer especializada en productos de Data & Business Intelligence.',
   email: 'hedy.herrada@gmail.com', // reemplazar por un alias del dominio al publicarlo
-  linkedin: '', // pegar la URL del perfil
+  linkedin: 'https://www.linkedin.com/in/hedy-herrada-75365b147/',
   behance: 'https://www.behance.net/gallery/242380291/EAT-Japan-App-movil-Presentacion-UX', // reemplazar por la URL del perfil
   cv: withBase('/cv/hedy-herrada-cv.pdf'),
   cvLabel: 'Descargar CV (PDF, 225 KB)',
