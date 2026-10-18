@@ -1,6 +1,6 @@
 ---
 title: "Customer journeys in multi-floor stores"
-summary: "A Sankey diagram that shows how people move between floors without every level change getting lost in a generic node."
+summary: "A Sankey diagram that shows how people move between floors preventing level changes from being grouped into a generic node."
 origin: FollowUP
 year: 2026
 format: completo

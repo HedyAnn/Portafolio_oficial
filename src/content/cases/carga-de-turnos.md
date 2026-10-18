@@ -1,6 +1,6 @@
 ---
 title: "Carga de turnos"
-summary: Módulo para cargar los turnos de los vendedores por tienda, con una primera versión acotada para entregarle rápido a operaciones.
+summary: Módulo para cargar los turnos de los vendedores por tienda, con un alcance acotado para una primera entrega al equipo de operaciones.
 origin: FollowUP
 year: 2026
 format: breve

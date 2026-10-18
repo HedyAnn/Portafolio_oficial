@@ -1,6 +1,6 @@
 ---
 title: "Shift Loading"
-summary: "A module to load salespeople shifts by store, with a focused first version to deliver to operations quickly."
+summary: "A module to load salespeople shifts by store, with a focused scope for a first delivery to the operations team."
 origin: FollowUP
 year: 2026
 format: breve

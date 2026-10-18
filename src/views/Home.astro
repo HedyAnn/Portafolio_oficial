@@ -19,50 +19,54 @@ const total = all.length;
 const copy = {
   es: {
     hello: 'Hola, soy Hedy.',
-    title: ['Transformo problemas complejos en productos', 'simples de usar.'],
-    lead: 'Product Designer UX/UI. Acompaño todo el proceso: discovery, investigación con usuarios, flujos, prototipos y validación, hasta que la solución llega a producción. He diseñado para SaaS, apps y marcas.',
+    // Una entrada por línea del titular (siempre 4 líneas; la última va destacada)
+    title: ['Transformo', 'problemas complejos', 'en productos', 'simples de usar.'],
+    lead: 'Product Designer UX/UI. Trabajo en todo el proceso: discovery, investigación con usuarios, flujos, prototipos y validación, hasta que la solución llega a producción. He diseñado para SaaS, apps y marcas.',
     seeProjects: 'Ver proyectos',
     projects: 'Proyectos',
     projectsLead: 'Productos de datos, dashboards y procesos UX completos. Cada proyecto empieza por el problema y muestra las decisiones que tomé.',
     seeAll: (n: number) => `Ver los ${n} proyectos`,
     process: 'Cómo trabajo',
-    processLead: 'Sigo el proceso completo de UX/UI, del discovery a la entrega, y lo ajusto al tamaño de cada proyecto. Cuando la evidencia lo pide, vuelvo a una etapa anterior.',
+    processLead: 'Sigo el proceso completo de UX/UI, del discovery a la entrega, y lo ajusto al tamaño de cada proyecto. Cuando la evidencia lo justifica, retomo una etapa anterior.',
     aboutTitle: 'De UX/UI a Product Design',
-    aboutLead: 'Empecé diseñando interfaces y hoy también defino modelos de datos, reglas de negocio y prioridades junto al equipo de producto. Vengo además de la programación y la ciberseguridad, y eso se nota en cómo pienso los sistemas.',
+    aboutLead: 'Empecé diseñando interfaces y hoy también defino modelos de datos, reglas de negocio y prioridades junto al equipo de producto. Mi formación previa en programación y ciberseguridad influye en cómo abordo el diseño de sistemas.',
     aboutMore: 'Conocer mi trayectoria',
     facts: [
       ['Hoy', 'Product Designer UX/UI en SaaS de analítica para retail'],
       ['Formación', 'Diplomado UX/UI (Coderhouse), UX de Google, Diplomado en Ciberseguridad'],
-      ['Herramientas', 'Figma, FigJam, Maze, Python, HTML/CSS/JS, Claude'],
+      ['Herramientas', 'Figma, FigJam, Miro, Stitch, Maze, Notion, YouTrack, Claude, Codex, GitHub, Python, HTML/CSS/JS'],
       ['Idiomas', 'Español nativo, inglés C1'],
     ],
-    contactTitle: '¿Conversamos?',
+    contactTitle: 'Contacto',
     contactLead: 'Busco roles de Product Designer en productos de datos. Respondo en uno o dos días hábiles.',
   },
   en: {
     hello: "Hi, I'm Hedy.",
-    title: ['I turn complex problems into products that are', 'simple to use.'],
+    title: ['I turn complex', 'problems into', 'products that are', 'simple to use.'],
     lead: 'UX/UI Product Designer. I work across the whole process: discovery, user research, flows, prototypes and validation, all the way to production. I have designed for SaaS, apps and brands.',
     seeProjects: 'See projects',
     projects: 'Projects',
     projectsLead: 'Data products, dashboards and end-to-end UX processes. Each project starts with the problem and shows the decisions I made.',
     seeAll: (n: number) => `See all ${n} projects`,
     process: 'How I work',
-    processLead: 'I follow the full UX/UI process, from discovery to delivery, and adapt it to the size of each project. When the evidence calls for it, I go back to an earlier stage.',
+    processLead: 'I follow the full UX/UI process, from discovery to delivery, and adapt it to the size of each project. When the evidence justifies it, I return to an earlier stage.',
     aboutTitle: 'From UX/UI to Product Design',
     aboutLead: 'I started out designing interfaces, and today I also define data models, business rules and priorities with the product team. My background in programming and cybersecurity shapes how I think about systems.',
     aboutMore: 'Read my background',
     facts: [
       ['Today', 'UX/UI Product Designer at a retail analytics SaaS'],
       ['Education', 'UX/UI Diploma (Coderhouse), Google UX, Cybersecurity Diploma'],
-      ['Tools', 'Figma, FigJam, Maze, Python, HTML/CSS/JS, Claude'],
+      ['Tools', 'Figma, FigJam, Miro, Stitch, Maze, Notion, YouTrack, Claude, Codex, GitHub, Python, HTML/CSS/JS'],
       ['Languages', 'Spanish (native), English (C1)'],
     ],
-    contactTitle: "Let's talk",
+    contactTitle: 'Contact',
     contactLead: 'I am looking for Product Designer roles on data products. I reply within one or two business days.',
   },
 }[lang];
-const titleWords = copy.title[0].split(' ');
+// Cada palabra lleva su índice para la animación escalonada
+let n = 0;
+const titleLines = copy.title.slice(0, -1).map((line) => line.split(' ').map((w) => ({ w, i: n++ })));
+const hlIndex = n;
 ---
 
 <BaseLayout>
@@ -76,9 +80,11 @@ const titleWords = copy.title[0].split(' ');
       <div class="hero-copy">
         <p class="hello">{copy.hello}</p>
         <h1 id="hero-title" class="display hero-title">
-          {titleWords.map((w, i) => <Fragment><span class:list={['w', `d${i}`]}>{w}</span>{' '}</Fragment>)}
-          <span class:list={['w', 'hl', `d${titleWords.length}`]}>
-            {copy.title[1]}
+          {titleLines.map((line) => (
+            <span class="line">{line.map(({ w, i }) => <Fragment><span class:list={['w', `d${i}`]}>{w}</span>{' '}</Fragment>)}</span>
+          ))}
+          <span class:list={['w', 'hl', `d${hlIndex}`]}>
+            {copy.title[copy.title.length - 1]}
             <svg class="swoosh" viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path d="M4 14 C 60 4, 140 4, 296 10" pathLength="100" /></svg>
           </span>
         </h1>
@@ -209,8 +215,10 @@ const titleWords = copy.title[0].split(' ');
   }
   .hero-copy { display: grid; gap: var(--space-5, 20px); }
   .hello { color: var(--primary-text); font-weight: 600; }
-  /* Titular: máximo 4 líneas en español e inglés, desde 320px hasta escritorio */
-  .hero h1 { max-width: none; font-size: clamp(2.25rem, 1.4rem + 3.4vw, 4.5rem); text-wrap: balance; }
+  /* Titular: siempre 4 líneas (una por entrada de copy.title) en español e inglés */
+  .hero h1 { max-width: none; font-size: clamp(2.5rem, 1.3rem + 3.4vw, 4.5rem); }
+  @media (max-width: 359px) { .hero h1 { font-size: 2.25rem; } }
+  .hero-title .line { display: block; }
 
   /* ---------- Titular: palabras que aparecen + frase destacada ---------- */
   .hero-copy > .hero-title { animation: none; }
