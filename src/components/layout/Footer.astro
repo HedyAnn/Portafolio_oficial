@@ -1,5 +1,9 @@
 ---
-import { site, nav } from '../../site';
+import { site } from '../../site';
+import { getLang, navFor, ui } from '../../i18n';
+const lang = getLang(Astro.url);
+const t = ui[lang];
+const nav = navFor(lang);
 const year = new Date().getFullYear();
 ---
 
@@ -7,9 +11,9 @@ const year = new Date().getFullYear();
   <div class="container inner">
     <div>
       <p class="name">{site.name}</p>
-      <p class="muted">{site.role} · Santiago, Chile</p>
+      <p class="muted">{t.role} · {t.location}</p>
     </div>
-    <nav aria-label="Pie de página">
+    <nav aria-label={t.footerLabel}>
       <ul>
         {nav.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
         <li><a href={site.cv} download>CV</a></li>
@@ -17,7 +21,7 @@ const year = new Date().getFullYear();
         {site.behance && <li><a href={site.behance} rel="noopener noreferrer" target="_blank">Behance</a></li>}
       </ul>
     </nav>
-    <p class="muted small">© {year} {site.name}. Pantallas de proyectos con datos ficticios.</p>
+    <p class="muted small">© {year} {site.name}. {t.footerNote}</p>
   </div>
 </footer>
 

@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CaseCard from '../components/case/CaseCard.astro';
+import { getCases } from '../cases';
+import type { Lang } from '../i18n';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const cases = await getCases(lang);
+const c = {
+  es: { title: 'Proyectos', description: 'Proyectos de Product Design y UX/UI de Hedy Herrada.', lead: 'Productos de datos, dashboards y procesos UX completos. Las pantallas usan datos ficticios.' },
+  en: { title: 'Projects', description: 'Product Design and UX/UI projects by Hedy Herrada.', lead: 'Data products, dashboards and end-to-end UX processes. Screens use fictional data.' },
+}[lang];
+---
+
+<BaseLayout title={c.title} description={c.description}>
+  <section class="section">
+    <div class="container">
+      <header class="head">
+        <h1 class="display">{c.title}</h1>
+        <p class="lead">{c.lead}</p>
+      </header>
+      <div class="grid">
+        {cases.map((entry) => <CaseCard entry={entry} headingLevel="h2" />)}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .head { display: grid; gap: var(--space-4); margin-bottom: var(--space-12); }
+  .grid { display: grid; gap: var(--space-8); }
+  @media (min-width: 760px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+</style>

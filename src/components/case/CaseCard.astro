@@ -1,11 +1,11 @@
 ---
-import type { CollectionEntry } from 'astro:content';
 import { Image } from 'astro:assets';
 import CaseVisual from './CaseVisual.astro';
-import { withBase } from '../../site';
+import type { CaseEntry } from '../../cases';
+import { caseUrl, getLang, ui } from '../../i18n';
 
 interface Props {
-  entry: CollectionEntry<'cases'>;
+  entry: CaseEntry;
   wide?: boolean;
   headingLevel?: 'h2' | 'h3';
 }
@@ -14,7 +14,8 @@ const { entry, wide = false, headingLevel = 'h3' } = Astro.props;
 const { title, summary, tags, origin, year, cover, coverAlt } = entry.data;
 const Heading = headingLevel;
 // El nombre de la empresa no aparece como marca en las tarjetas
-const originLabel = origin === 'FollowUP' ? 'SaaS de analítica retail' : origin;
+const lang = getLang(Astro.url);
+const originLabel = ui[lang].origin[origin];
 const variants = {
   'carga-de-metas': 'grid',
   'meta-justa': 'bars',
@@ -37,7 +38,7 @@ const variant = variants[entry.id as keyof typeof variants] ?? 'system';
   <div class="body">
     <p class="meta">{originLabel}, {year}</p>
     <Heading class="title">
-      <a href={withBase(`/casos/${entry.id}/`)}>{title}</a>
+      <a href={caseUrl(entry.id, lang)}>{title}</a>
     </Heading>
     <p class="summary">{summary}</p>
     <ul class="tags">{tags.map((t) => <li class="tag">{t}</li>)}</ul>

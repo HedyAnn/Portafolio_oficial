@@ -1,13 +1,19 @@
 ---
-import { nav, site, withBase } from '../../site';
+import { site, withBase } from '../../site';
+import { getLang, navFor, translatePath, ui, url } from '../../i18n';
+const lang = getLang(Astro.url);
+const other = lang === 'es' ? 'en' : 'es';
+const t = ui[lang];
+const nav = navFor(lang);
 const path = Astro.url.pathname;
 const isCurrent = (href: string) => path === href || path.startsWith(href);
-const isCase = /\/casos\/[^/]+\/$/.test(path);
+const isCase = /\/(casos|projects)\/[^/]+\/$/.test(path);
+const switchHref = translatePath(Astro.url, other);
 ---
 
 <header class="site-header" data-header>
   <div class="bar">
-    <a class="brand" href={withBase('/')} aria-label={`${site.name}, inicio`}>
+    <a class="brand" href={url('home', lang)} aria-label={`${site.name}, ${t.home}`}>
       <svg class="mark" viewBox="0 0 32 32" width="34" height="34" aria-hidden="true">
         <defs>
           <linearGradient id="brand-g" x1="0" y1="0" x2="1" y2="1">
@@ -21,7 +27,7 @@ const isCase = /\/casos\/[^/]+\/$/.test(path);
       <span class="brand-name">{site.name}</span>
     </a>
 
-    <nav class="nav" aria-label="Principal">
+    <nav class="nav" aria-label={t.navLabel}>
       <div class="track" data-nav-list>
         <span class="indicator" aria-hidden="true" data-nav-indicator></span>
         <ul>
@@ -35,12 +41,16 @@ const isCase = /\/casos\/[^/]+\/$/.test(path);
     </nav>
 
     <div class="actions">
-      <button class="icon-btn theme-toggle" type="button" data-theme-toggle aria-label="Cambiar a tema oscuro">
+      <a class="lang-switch" href={switchHref} hreflang={other} lang={other} aria-label={t.switchTo} data-lang-switch>
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M3 12h18M12 3c2.6 2.6 3.8 5.6 3.8 9s-1.2 6.4-3.8 9c-2.6-2.6-3.8-5.6-3.8-9S9.4 5.6 12 3Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        <span>{t.switchShort}</span>
+      </a>
+      <button class="icon-btn theme-toggle" type="button" data-theme-toggle aria-label={t.themeToDark} data-label-dark={t.themeToDark} data-label-light={t.themeToLight}>
         <svg class="i-sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
         <svg class="i-moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
       </button>
-      <a class="contact-cta" href={`mailto:${site.email}`}>Contactar</a>
-      <button class="icon-btn menu-btn" type="button" data-menu-toggle aria-expanded="false" aria-controls="menu-panel" aria-label="Abrir menú">
+      <a class="contact-cta" href={`mailto:${site.email}`}>{t.contact}</a>
+      <button class="icon-btn menu-btn" type="button" data-menu-toggle aria-expanded="false" aria-controls="menu-panel" aria-label={t.menuOpen} data-label-open={t.menuOpen} data-label-close={t.menuClose}>
         <span class="burger" aria-hidden="true"><span></span><span></span></span>
       </button>
     </div>
@@ -55,8 +65,8 @@ const isCase = /\/casos\/[^/]+\/$/.test(path);
       ))}
     </ul>
     <div class="menu-actions">
-      <a class="btn btn-primary" href={`mailto:${site.email}`}>Escribirme un correo</a>
-      <a class="btn btn-quiet" href={site.cv} download>{site.cvLabel}</a>
+      <a class="btn btn-primary" href={`mailto:${site.email}`}>{t.email}</a>
+      <a class="btn btn-quiet" href={site.cv} download>{t.cvLong}</a>
     </div>
   </div>
 </header>
@@ -180,6 +190,34 @@ const isCase = /\/casos\/[^/]+\/$/.test(path);
     transition: background-color var(--duration-fast) var(--ease-out), transform var(--duration-base) var(--ease-spring);
   }
   .icon-btn:hover { background: var(--surface-raised); }
+
+  /* Selector de idioma: enlace a la misma página en el otro idioma */
+  .lang-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 44px;
+    padding: 0 var(--space-3);
+    border-radius: var(--radius-pill);
+    color: var(--text);
+    font-weight: 600;
+    font-size: 0.875rem;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    touch-action: manipulation;
+    transition: background-color var(--duration-fast) var(--ease-out), color var(--duration-fast) var(--ease-out);
+  }
+  .lang-switch:hover { background: var(--surface-raised); color: var(--primary-text); }
+  .lang-switch svg { transition: transform var(--duration-base) var(--ease-spring); }
+  .lang-switch:hover svg { transform: rotate(-20deg); }
+  /* Pantallas angostas: el selector queda solo con la sigla y, bajo 360px, la marca solo con el monograma */
+  @media (max-width: 400px) {
+    .lang-switch { padding: 0 var(--space-2); }
+    .lang-switch svg { display: none; }
+  }
+  @media (max-width: 359px) {
+    .brand-name { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  }
   .theme-toggle:active { transform: rotate(-24deg) scale(0.92); }
   .i-moon { display: none; }
   :global([data-scheme='light']) .i-sun { display: none; }

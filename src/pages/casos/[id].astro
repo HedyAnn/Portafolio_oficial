@@ -1,56 +1,10 @@
 ---
-import { getCollection, render } from 'astro:content';
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import { site, withBase } from '../../site';
+import Case from '../../views/Case.astro';
+import { getCases } from '../../cases';
 
 export async function getStaticPaths() {
-  const cases = (await getCollection('cases')).sort((a, b) => a.data.order - b.data.order);
-  return cases.map((entry, i) => ({
-    params: { id: entry.id },
-    props: { entry, next: cases[(i + 1) % cases.length] },
-  }));
+  const cases = await getCases('es');
+  return cases.map((entry, i) => ({ params: { id: entry.id }, props: { entry, next: cases[(i + 1) % cases.length] } }));
 }
-
-const { entry, next } = Astro.props;
-const { title, summary, role, tools, year, origin, draft } = entry.data;
-const { Content } = await render(entry);
-const originLabel = origin === 'FollowUP' ? 'SaaS de analítica retail' : origin;
 ---
-
-<BaseLayout title={title} description={summary}>
-  <article class="section">
-    <div class="container">
-      <nav class="crumbs" aria-label="Ruta"><a href={withBase('/casos/')}>Proyectos</a> / <span aria-current="page">{title}</span></nav>
-      <header class="case-head">
-        <h1 class="h1">{title}</h1>
-        <p class="lead">{summary}</p>
-        <dl class="ficha">
-          <div><dt>Rol</dt><dd>{role.join(', ')}</dd></div>
-          <div><dt>Contexto</dt><dd>{originLabel}, {year}</dd></div>
-          {tools.length > 0 && <div><dt>Herramientas</dt><dd>{tools.join(', ')}</dd></div>}
-        </dl>
-        {draft && <p class="draft">Proyecto en redacción: el contenido final está en camino.</p>}
-      </header>
-      <div class="prose">
-        <Content />
-      </div>
-      <footer class="case-foot">
-        <a class="btn btn-primary" href={`mailto:${site.email}`}>Conversemos sobre este proyecto</a>
-        {next && next.id !== entry.id && <a class="btn btn-secondary" href={withBase(`/casos/${next.id}/`)}>Siguiente proyecto: {next.data.title}</a>}
-      </footer>
-    </div>
-  </article>
-</BaseLayout>
-
-<style>
-  .crumbs { color: var(--text-subtle); font-size: 0.875rem; margin-bottom: var(--space-8); }
-  .crumbs a { color: var(--text-muted); }
-  .case-head { display: grid; gap: var(--space-6); max-width: 68ch; margin-bottom: var(--space-12); }
-  .ficha { display: grid; gap: var(--space-4); margin: 0; padding: var(--space-6); border-radius: var(--radius-lg); background: var(--surface); }
-  @media (min-width: 760px) { .ficha { grid-template-columns: repeat(3, 1fr); } }
-  .ficha dt { color: var(--text-subtle); font-size: 0.875rem; }
-  .ficha dd { margin: var(--space-1) 0 0; font-weight: 500; }
-  .draft { padding: var(--space-3) var(--space-4); border-radius: var(--radius-sm); border: 1px dashed var(--warning); color: var(--text-muted); font-size: 0.9375rem; }
-  .prose :global(h2) { font-family: var(--font-display); font-weight: 450; font-size: 1.875rem; line-height: 1.2; }
-  .case-foot { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-16); padding-top: var(--space-8); border-top: 1px solid var(--border); }
-</style>
+<Case lang="es" {...Astro.props} />

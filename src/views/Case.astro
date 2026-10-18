@@ -1,0 +1,55 @@
+---
+import { render } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../site';
+import type { CaseEntry } from '../cases';
+import { caseUrl, ui, url, type Lang } from '../i18n';
+
+interface Props { lang: Lang; entry: CaseEntry; next?: CaseEntry }
+const { lang, entry, next } = Astro.props;
+const { title, summary, role, tools, year, origin, draft } = entry.data;
+const { Content } = await render(entry);
+const originLabel = ui[lang].origin[origin];
+const c = {
+  es: { crumbs: 'Ruta', projects: 'Proyectos', role: 'Rol', context: 'Contexto', tools: 'Herramientas', draft: '{c.draft}', talk: 'Conversemos sobre este proyecto', next: 'Siguiente proyecto' },
+  en: { crumbs: 'Breadcrumb', projects: 'Projects', role: 'Role', context: 'Context', tools: 'Tools', draft: 'Case study in progress: the full write-up is on its way.', talk: "Let's talk about this project", next: 'Next project' },
+}[lang];
+---
+
+<BaseLayout title={title} description={summary}>
+  <article class="section">
+    <div class="container">
+      <nav class="crumbs" aria-label={c.crumbs}><a href={url('projects', lang)}>{c.projects}</a> / <span aria-current="page">{title}</span></nav>
+      <header class="case-head">
+        <h1 class="h1">{title}</h1>
+        <p class="lead">{summary}</p>
+        <dl class="ficha">
+          <div><dt>{c.role}</dt><dd>{role.join(', ')}</dd></div>
+          <div><dt>{c.context}</dt><dd>{originLabel}, {year}</dd></div>
+          {tools.length > 0 && <div><dt>{c.tools}</dt><dd>{tools.join(', ')}</dd></div>}
+        </dl>
+        {draft && <p class="draft">{c.draft}</p>}
+      </header>
+      <div class="prose">
+        <Content />
+      </div>
+      <footer class="case-foot">
+        <a class="btn btn-primary" href={`mailto:${site.email}`}>{c.talk}</a>
+        {next && next.id !== entry.id && <a class="btn btn-secondary" href={caseUrl(next.id, lang)}>{c.next}: {next.data.title}</a>}
+      </footer>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .crumbs { color: var(--text-subtle); font-size: 0.875rem; margin-bottom: var(--space-8); }
+  .crumbs a { color: var(--text-muted); }
+  .case-head { display: grid; gap: var(--space-6); max-width: 68ch; margin-bottom: var(--space-12); }
+  .ficha { display: grid; gap: var(--space-4); margin: 0; padding: var(--space-6); border-radius: var(--radius-lg); background: var(--surface); }
+  @media (min-width: 760px) { .ficha { grid-template-columns: repeat(3, 1fr); } }
+  .ficha dt { color: var(--text-subtle); font-size: 0.875rem; }
+  .ficha dd { margin: var(--space-1) 0 0; font-weight: 500; }
+  .draft { padding: var(--space-3) var(--space-4); border-radius: var(--radius-sm); border: 1px dashed var(--warning); color: var(--text-muted); font-size: 0.9375rem; }
+  .prose :global(h2) { font-family: var(--font-display); font-weight: 450; font-size: 1.875rem; line-height: 1.2; }
+  .case-foot { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-16); padding-top: var(--space-8); border-top: 1px solid var(--border); }
+</style>

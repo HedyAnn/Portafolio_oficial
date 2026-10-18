@@ -70,13 +70,13 @@
     if (!panel || panel.hidden) return;
     panel.hidden = true;
     btn.setAttribute('aria-expanded', 'false');
-    btn.setAttribute('aria-label', 'Abrir menú');
+    btn.setAttribute('aria-label', btn.dataset.labelOpen || 'Abrir menú');
     if (focusBtn) btn.focus();
   }
   function open() {
     panel.hidden = false;
     btn.setAttribute('aria-expanded', 'true');
-    btn.setAttribute('aria-label', 'Cerrar menú');
+    btn.setAttribute('aria-label', btn.dataset.labelClose || 'Cerrar menú');
     var first = panel.querySelector('a');
     if (first) first.focus();
   }

@@ -3,7 +3,10 @@ import { withBase } from '../../site';
 // "Cómo trabajo": explorador del proceso UX/UI.
 // Escritorio con JS: pestañas verticales + panel de detalle con una ilustración por etapa.
 // Sin JS o en móvil: las seis etapas se muestran apiladas, todas legibles.
-const phases = [
+import type { Lang } from '../../i18n';
+interface Props { lang?: Lang }
+const { lang = 'es' } = Astro.props;
+const phasesEs = [
   {
     id: 'discovery',
     name: 'Discovery',
@@ -53,10 +56,64 @@ const phases = [
     output: ['Specs para desarrollo', 'Revisión de implementación', 'Aprendizajes'],
   },
 ];
+const phasesEn = [
+  {
+    id: 'discovery',
+    name: 'Discovery',
+    title: 'I understand the problem and the business',
+    text: 'I meet with clients, operations and stakeholders to understand what decision each person needs to make, with what data, and which metric has to move.',
+    methods: ['Stakeholder interviews', 'Context map', 'Success metrics'],
+    output: ['Problem brief', 'Stakeholder map', 'Success metrics'],
+  },
+  {
+    id: 'investigacion',
+    name: 'Research',
+    title: 'I look for evidence before designing',
+    text: 'I interview and observe the people who use the product, review usage data and analyze competitors. Then I synthesize it into actionable findings.',
+    methods: ['User interviews', 'Usage data analysis', 'Benchmark'],
+    output: ['Findings synthesis', 'Personas', 'Customer journey'],
+  },
+  {
+    id: 'definicion',
+    name: 'Definition',
+    title: 'I define what gets built and why',
+    text: 'I turn findings into scope, flows, information architecture, data model and functional specification, together with the product team.',
+    methods: ['User flows', 'Information architecture', 'Data modeling'],
+    output: ['Flows', 'Functional specification', 'Acceptance criteria'],
+  },
+  {
+    id: 'diseno',
+    name: 'Design',
+    title: 'I explore and design the solution',
+    text: 'I go from wireframes to high-fidelity interfaces in Figma, built on the design system and with every decision documented.',
+    methods: ['Wireframes', 'Exploring alternatives', 'Design system'],
+    output: ['Wireframes', 'High-fidelity UI', 'Components'],
+  },
+  {
+    id: 'validacion',
+    name: 'Validation',
+    title: 'I test with real people',
+    text: 'I build prototypes in Figma or in code, depending on what needs validating, and run usability tests to fix issues before development.',
+    methods: ['Prototypes', 'Usability testing', 'Maze'],
+    output: ['Clickable prototype', 'Usability report', 'Prioritized fixes'],
+  },
+  {
+    id: 'entrega',
+    name: 'Delivery',
+    title: 'I stay with it until production',
+    text: 'I hand off, answer questions during the sprint, review the implementation and measure the outcome for the next iteration.',
+    methods: ['Handoff', 'Design QA', 'Metrics tracking'],
+    output: ['Dev specs', 'Implementation review', 'Learnings'],
+  },
+];
+const phases = lang === 'en' ? phasesEn : phasesEs;
+const labels = lang === 'en'
+  ? { tablist: 'Process stages', how: 'How I do it', what: 'What I deliver' }
+  : { tablist: 'Etapas del proceso', how: 'Cómo lo hago', what: 'Qué entrego' };
 ---
 
 <div class="explorer" data-explorer>
-  <div class="tabs" role="tablist" aria-label="Etapas del proceso" aria-orientation="vertical" data-tablist hidden>
+  <div class="tabs" role="tablist" aria-label={labels.tablist} aria-orientation="vertical" data-tablist hidden>
     <span class="rail" aria-hidden="true"><span class="rail-fill" data-rail></span></span>
     {phases.map((p, i) => (
       <button
@@ -86,11 +143,11 @@ const phases = [
           <p class="panel-text">{p.text}</p>
           <div class="panel-cols">
             <div>
-              <h4 class="col-label">Cómo lo hago</h4>
+              <h4 class="col-label">{labels.how}</h4>
               <ul class="chips">{p.methods.map((m) => <li>{m}</li>)}</ul>
             </div>
             <div>
-              <h4 class="col-label">Qué entrego</h4>
+              <h4 class="col-label">{labels.what}</h4>
               <ul class="checks">{p.output.map((o) => <li>{o}</li>)}</ul>
             </div>
           </div>

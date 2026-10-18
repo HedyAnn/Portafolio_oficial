@@ -1,10 +1,8 @@
-import { defineCollection } from 'astro:content';
+import { defineCollection, type SchemaContext } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 
-const cases = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/cases' }),
-  schema: ({ image }) =>
+const schema = ({ image }: SchemaContext) =>
     z.object({
       title: z.string(),
       summary: z.string().max(170),
@@ -21,7 +19,10 @@ const cases = defineCollection({
       draft: z.boolean().default(true),
       // Obliga a confirmar: sin logo ni datos reales de clientes.
       revisadoConfidencialidad: z.literal(true),
-    }),
-});
+    });
 
-export const collections = { cases };
+// Español en cases/, inglés en cases-en/ con el mismo nombre de archivo
+const cases = defineCollection({ loader: glob({ pattern: '**/*.md', base: './src/content/cases' }), schema });
+const casesEn = defineCollection({ loader: glob({ pattern: '**/*.md', base: './src/content/cases-en' }), schema });
+
+export const collections = { cases, casesEn };

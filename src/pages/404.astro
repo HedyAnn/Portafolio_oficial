@@ -1,16 +1,18 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { withBase } from '../site';
+import { url } from '../i18n';
 ---
 
 <BaseLayout title="Página no encontrada">
   <section class="section">
     <div class="container head">
       <h1 class="display">Esta página no existe.</h1>
-      <p class="lead">Puede que el enlace esté mal escrito o que el caso haya cambiado de dirección.</p>
+      <p class="lead">Puede que el enlace esté mal escrito o que el proyecto haya cambiado de dirección.</p>
+      <p class="muted" lang="en">This page doesn't exist. The link may be mistyped or the project may have moved.</p>
       <div class="cta-row">
-        <a class="btn btn-primary" href={withBase('/casos/')}>Ver proyectos</a>
-        <a class="btn btn-quiet" href={withBase('/')}>Ir al inicio</a>
+        <a class="btn btn-primary" href={url('projects', 'es')}>Ver proyectos</a>
+        <a class="btn btn-quiet" href={url('home', 'es')}>Ir al inicio</a>
+        <a class="btn btn-quiet" href={url('home', 'en')} lang="en">Go to the English site</a>
       </div>
     </div>
   </section>

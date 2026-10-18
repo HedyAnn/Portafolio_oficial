@@ -6,8 +6,8 @@
   var meta = document.querySelector('meta[name="theme-color"]');
   function sync() {
     if (meta) meta.setAttribute('content', root.dataset.scheme === 'dark' ? '#0f0b1a' : '#fbf8ff');
-    var next = root.dataset.scheme === 'dark' ? 'claro' : 'oscuro';
-    btn.setAttribute('aria-label', 'Cambiar a tema ' + next);
+    var label = root.dataset.scheme === 'dark' ? btn.dataset.labelLight : btn.dataset.labelDark;
+    if (label) btn.setAttribute('aria-label', label);
   }
   sync();
   btn.addEventListener('click', function () {

@@ -1,0 +1,10 @@
+---
+import Case from '../../../views/Case.astro';
+import { getCases } from '../../../cases';
+
+export async function getStaticPaths() {
+  const cases = await getCases('en');
+  return cases.map((entry, i) => ({ params: { id: entry.id }, props: { entry, next: cases[(i + 1) % cases.length] } }));
+}
+---
+<Case lang="en" {...Astro.props} />
