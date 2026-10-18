@@ -229,6 +229,25 @@ const c = {
   @keyframes pop { from { opacity: 0; transform: rotate(var(--r, 0deg)) translateY(12px) scale(0.92); } to { opacity: 1; transform: rotate(var(--r, 0deg)); } }
   @keyframes fade { to { opacity: 1; } }
 
+  /* Profundidad: hero-fx.js mueve --px/--py (-1 a 1) con el cursor; cada capa se desplaza distinto */
+  .frame { translate: calc(var(--px, 0) * -8px) calc(var(--py, 0) * -6px); }
+  .sketch { translate: calc(var(--px, 0) * 6px) calc(var(--py, 0) * 5px); }
+  .sticky { translate: calc(var(--px, 0) * 22px) calc(var(--py, 0) * 16px); }
+  .quote { translate: calc(var(--px, 0) * 16px) calc(var(--py, 0) * 20px); }
+  .flow { translate: calc(var(--px, 0) * 26px) calc(var(--py, 0) * 12px); }
+  .test { translate: calc(var(--px, 0) * 18px) calc(var(--py, 0) * 22px); }
+  .scribble { translate: calc(var(--px, 0) * 10px) calc(var(--py, 0) * 8px); }
+
+  /* En reposo, las piezas flotan suavemente (individual property: no choca con su rotación) */
+  @media (prefers-reduced-motion: no-preference) {
+    .note { animation: pop 520ms var(--ease-spring) forwards, bob 6s ease-in-out 1.6s infinite; }
+    .sticky { animation-delay: 200ms, 1.6s; }
+    .quote { animation-duration: 520ms, 7s; animation-delay: 320ms, 2s; }
+    .flow { animation-duration: 520ms, 6.5s; animation-delay: 440ms, 1.8s; }
+    .test { animation-duration: 520ms, 5.5s; animation-delay: 560ms, 2.3s; }
+  }
+  @keyframes bob { 50% { margin-top: -6px; } }
+
   /* Móvil: menos piezas, más foto */
   @media (max-width: 640px) {
     .frame { width: 72%; }

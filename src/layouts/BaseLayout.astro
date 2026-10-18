@@ -22,7 +22,7 @@ const altEn = new URL(translatePath(Astro.url, 'en'), Astro.site);
 ---
 
 <!doctype html>
-<html lang={t.htmlLang} data-scheme="light">
+<html lang={t.htmlLang} data-scheme="dark">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -33,7 +33,7 @@ const altEn = new URL(translatePath(Astro.url, 'en'), Astro.site);
     <link rel="alternate" hreflang="en" href={altEn} />
     <link rel="alternate" hreflang="x-default" href={altEs} />
     <link rel="icon" href={withBase('/favicon.svg')} type="image/svg+xml" />
-    <meta name="theme-color" content="#fbf8ff" />
+    <meta name="theme-color" content="#0f0b1a" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />

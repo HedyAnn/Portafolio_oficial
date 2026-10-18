@@ -2,5 +2,5 @@
 (function () {
   var t = null;
   try { t = localStorage.getItem('hh-theme'); } catch (e) {}
-  document.documentElement.dataset.scheme = t === 'light' || t === 'dark' ? t : 'light';
+  document.documentElement.dataset.scheme = t === 'light' || t === 'dark' ? t : 'dark';
 })();
