@@ -8,7 +8,7 @@ role: [Product Design, Data viz, Especificación]
 tools: [Figma, Python]
 tags: [Data viz, Sankey, Tracking]
 featured: true
-order: 3
+order: 4
 draft: true
 revisadoConfidencialidad: true
 ---
@@ -17,9 +17,17 @@ revisadoConfidencialidad: true
 
 Por escribir.
 
+## Mi rol
+
+Por escribir.
+
+## Proceso
+
+Por escribir.
+
 ## Decisiones clave
 
-Por escribir: nodos parametrizados por nivel de destino ("Cambio a P1"), entradas y salidas propias por piso, nomenclatura PB, P1, P2.
+Por escribir.
 
 ## Resultado
 

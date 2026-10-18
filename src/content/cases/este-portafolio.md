@@ -15,4 +15,20 @@ revisadoConfidencialidad: true
 
 ## Contexto
 
-Por escribir a partir de la bitácora del proyecto.
+Por escribir.
+
+## Mi rol
+
+Por escribir.
+
+## Proceso
+
+Por escribir.
+
+## Decisiones clave
+
+Por escribir.
+
+## Resultado
+
+Por escribir.

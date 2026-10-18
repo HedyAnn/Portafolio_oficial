@@ -21,8 +21,12 @@ const switchHref = translatePath(Astro.url, other);
           </linearGradient>
         </defs>
         <rect width="32" height="32" rx="10" fill="url(#brand-g)" />
-        <path d="M10.5 9v14M21.5 9v14" class="mark-stroke" stroke-width="3.2" />
-        <path d="M10.5 19.5c4 0 6.5-5.5 11-5.5" class="mark-stroke" stroke-width="2.6" />
+        <g class="mark-fill">
+          <path d="M10.2 9h2.8v14h-2.8z" /><path d="M19 9h2.8v14h-2.8z" />
+          <path d="M13 15.3h6v1.4h-6z" />
+          <path d="M8.6 8.6h6v1.3h-6z" /><path d="M8.6 22.1h6v1.3h-6z" />
+          <path d="M17.4 8.6h6v1.3h-6z" /><path d="M17.4 22.1h6v1.3h-6z" />
+        </g>
       </svg>
       <span class="brand-name">{site.name}</span>
     </a>
@@ -107,7 +111,7 @@ const switchHref = translatePath(Astro.url, other);
   .mark { flex: none; transition: transform var(--duration-base) var(--ease-spring); }
   .brand:hover .mark { transform: rotate(-8deg) scale(1.06); }
   .mark { border-radius: 10px; box-shadow: 0 4px 14px -4px color-mix(in oklab, var(--primary) 55%, transparent); }
-  .mark-stroke { fill: none; stroke: #fff; stroke-linecap: round; }
+  .mark-fill { fill: #fff; }
   .brand-name {
     font-family: var(--font-display);
     font-size: 1.1875rem;

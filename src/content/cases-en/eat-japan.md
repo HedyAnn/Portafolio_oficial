@@ -7,8 +7,8 @@ format: completo
 role: [UX Research, UX/UI Design, Branding]
 tools: [Figma, Material Design]
 tags: [Mobile app, UX Research, Branding]
-featured: true
-order: 5
+featured: false
+order: 6
 draft: true
 revisadoConfidencialidad: true
 ---

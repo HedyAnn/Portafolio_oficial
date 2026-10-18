@@ -8,7 +8,7 @@ role: [Product Design, Data viz]
 tools: [Figma]
 tags: [Dashboards, Data viz, Retail]
 featured: false
-order: 6
+order: 7
 draft: true
 revisadoConfidencialidad: true
 ---
@@ -18,6 +18,10 @@ revisadoConfidencialidad: true
 Por escribir.
 
 ## Mi rol
+
+Por escribir.
+
+## Proceso
 
 Por escribir.
 

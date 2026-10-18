@@ -8,7 +8,7 @@ role: [Product Design, Data viz, Specification]
 tools: [Figma, Python]
 tags: [Data viz, Sankey, Tracking]
 featured: true
-order: 3
+order: 4
 draft: true
 revisadoConfidencialidad: true
 ---
@@ -17,9 +17,17 @@ revisadoConfidencialidad: true
 
 Coming soon.
 
+## My role
+
+Coming soon.
+
+## Process
+
+Coming soon.
+
 ## Key decisions
 
-Coming soon: nodes parameterized by destination level ("Change to F1"), separate entries and exits per floor, GF, F1, F2 naming.
+Coming soon.
 
 ## Outcome
 

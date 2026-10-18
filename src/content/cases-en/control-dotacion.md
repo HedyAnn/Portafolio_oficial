@@ -8,7 +8,7 @@ role: [Product Design, Data viz]
 tools: [Figma]
 tags: [Dashboards, Staffing, Retail]
 featured: false
-order: 7
+order: 8
 draft: true
 revisadoConfidencialidad: true
 ---
@@ -18,6 +18,10 @@ revisadoConfidencialidad: true
 Coming soon.
 
 ## My role
+
+Coming soon.
+
+## Process
 
 Coming soon.
 

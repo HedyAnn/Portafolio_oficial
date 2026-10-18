@@ -15,4 +15,20 @@ revisadoConfidencialidad: true
 
 ## Context
 
-Coming soon, based on the project log.
+Coming soon.
+
+## My role
+
+Coming soon.
+
+## Process
+
+Coming soon.
+
+## Key decisions
+
+Coming soon.
+
+## Outcome
+
+Coming soon.

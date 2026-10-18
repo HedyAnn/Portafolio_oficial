@@ -8,12 +8,20 @@ role: [Product Design, Data viz]
 tools: [Figma]
 tags: [Dashboards, Data viz, Retail]
 featured: true
-order: 2
+order: 3
 draft: true
 revisadoConfidencialidad: true
 ---
 
 ## Context
+
+Coming soon.
+
+## My role
+
+Coming soon.
+
+## Process
 
 Coming soon.
 

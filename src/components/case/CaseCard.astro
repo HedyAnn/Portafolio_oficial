@@ -79,6 +79,8 @@ const variant = variants[entry.id as keyof typeof variants] ?? 'system';
 
   .media { aspect-ratio: 16 / 10; border-radius: var(--radius-md); overflow: hidden; background: var(--surface-raised); }
   .media :global(img), .media :global(svg) { width: 100%; height: 100%; object-fit: cover; transition: transform var(--duration-slow) var(--ease-out); }
+  /* Las capturas se muestran completas, sin recorte, sobre el gris claro de su propio borde */
+  .media :global(img) { object-fit: contain; background: #f4f6f9; }
   .case-card:hover .media :global(img), .case-card:hover .media :global(svg) { transform: scale(1.04); }
 
   .body { display: grid; gap: var(--space-3); align-content: start; }

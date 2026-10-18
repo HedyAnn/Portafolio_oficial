@@ -8,7 +8,7 @@ role: [UX/UI Design, Information architecture, Design system]
 tools: [Figma, FigJam, Maze]
 tags: [Information architecture, Dashboards, Design system]
 featured: false
-order: 4
+order: 5
 draft: true
 revisadoConfidencialidad: true
 ---
@@ -18,6 +18,10 @@ revisadoConfidencialidad: true
 Coming soon.
 
 ## My role
+
+Coming soon.
+
+## Process
 
 Coming soon.
 

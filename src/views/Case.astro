@@ -8,7 +8,7 @@ import { caseUrl, ui, url, type Lang } from '../i18n';
 
 interface Props { lang: Lang; entry: CaseEntry; next?: CaseEntry }
 const { lang, entry, next } = Astro.props;
-const { title, summary, role, tools, year, origin, draft, cover, coverAlt, cover2, coverAlt2 } = entry.data;
+const { title, summary, role, tools, year, origin, draft, cover, coverAlt, cover2, coverAlt2, cover3, coverAlt3 } = entry.data;
 const { Content } = await render(entry);
 const originLabel = ui[lang].origin[origin];
 const c = {
@@ -20,7 +20,11 @@ const c = {
 <BaseLayout title={title} description={summary}>
   <article class="section case">
     <div class="container">
-      <nav class="crumbs" aria-label={c.crumbs}><a href={url('projects', lang)}>{c.projects}</a> / <span aria-current="page">{title}</span></nav>
+      <nav class="crumbs" aria-label={c.crumbs}>
+        <a class="crumb-home" href={url('home', lang)} aria-label={ui[lang].crumbHome}>
+          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M4 10.5 12 4l8 6.5V20a1 1 0 0 1-1 1h-4.5v-6h-5v6H5a1 1 0 0 1-1-1Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+        </a> / <a href={url('projects', lang)}>{c.projects}</a> / <span aria-current="page">{title}</span>
+      </nav>
       <header class="case-head">
         <h1 class="h1">{title}</h1>
         <p class="lead">{summary}</p>
@@ -36,6 +40,11 @@ const c = {
           {cover2 && coverAlt2 && (
             <figure class="cover">
               <Image src={cover2} alt={coverAlt2} widths={[480, 720, 960, 1280]} sizes="(min-width: 900px) 44vw, 94vw" loading="lazy" />
+            </figure>
+          )}
+          {cover3 && coverAlt3 && (
+            <figure class="cover">
+              <Image src={cover3} alt={coverAlt3} widths={[480, 720, 960, 1280]} sizes="(min-width: 900px) 44vw, 94vw" loading="lazy" />
             </figure>
           )}
           <dl class="ficha">
@@ -59,6 +68,8 @@ const c = {
 <style>
   .crumbs { color: var(--text-subtle); font-size: 0.875rem; margin-bottom: var(--space-8); }
   .crumbs a { color: var(--text-muted); }
+  .crumbs a:hover { color: var(--primary-text); }
+  .crumb-home { display: inline-flex; vertical-align: -3px; padding: 2px; border-radius: var(--radius-sm); }
   .case { overflow-x: clip; }
   /* Encabezado: título y, debajo, el resumen a todo el ancho de la página */
   .case-head { display: grid; gap: var(--space-5); margin-bottom: var(--space-12); }

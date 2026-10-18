@@ -8,7 +8,7 @@ role: [UX/UI Design, Arquitectura de información, Sistema de diseño]
 tools: [Figma, FigJam, Maze]
 tags: [Arquitectura de información, Dashboards, Sistema de diseño]
 featured: false
-order: 4
+order: 5
 draft: true
 revisadoConfidencialidad: true
 ---
@@ -18,6 +18,10 @@ revisadoConfidencialidad: true
 Por escribir.
 
 ## Mi rol
+
+Por escribir.
+
+## Proceso
 
 Por escribir.
 

@@ -14,9 +14,11 @@ const schema = ({ image }: SchemaContext) =>
       tags: z.array(z.string()).max(3),
       cover: image().optional(),
       coverAlt: z.string().min(10).optional(),
-      // Segunda captura, opcional, bajo la portada
+      // Capturas adicionales, opcionales, bajo la portada
       cover2: image().optional(),
       coverAlt2: z.string().min(10).optional(),
+      cover3: image().optional(),
+      coverAlt3: z.string().min(10).optional(),
       featured: z.boolean().default(false),
       order: z.number().int(),
       draft: z.boolean().default(true),
