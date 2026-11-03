@@ -1,37 +1,58 @@
 ---
-title: "Rediseño ComunidadFeliz"
-summary: Rediseño del sitio web de ComunidadFeliz, plataforma de administración de edificios y condominios, basado en tree testing y un design system propio.
-origin: Independiente
-year: 2025
+title: "Rediseño web de ComunidadFeliz"
+summary: "Rediseño del sitio web de ComunidadFeliz con el proceso UX/UI completo: investigación, pruebas de usabilidad, benchmark, propuesta y validación con usuarios."
+lead: "Rediseño del sitio web de ComunidadFeliz, desarrollado como proyecto del Diplomado UX/UI de Coderhouse, con el proceso completo: investigación, arquitectura de información, sistema de diseño, prototipo y pruebas de usabilidad."
+origin: "Académico"
+year: 2026
 format: completo
-role: [UX Research, UX/UI Design]
-tools: [Figma, Maze, Miro, Adobe Illustrator, Adobe Photoshop, Behance]
-tags: [Sitio web, Tree testing, Design System]
-cover: ../../assets/cases/rediseno-comunidadfeliz-1.png
-coverAlt: "Propuesta de home rediseñada de ComunidadFeliz: hero con el mensaje «Administra tu comunidad sin caos ni planillas», botones Cotizar y Solicitar Demo, y tarjetas con cifras de comunidades, usuarios y países."
-cover2: ../../assets/cases/rediseno-comunidadfeliz-2.png
-coverAlt2: "Resultados del tree testing de la tarea 1, buscar la información institucional de la empresa: árbol de rutas de navegación de los participantes y gráfico circular con 30% de éxito indirecto, 60% de falla indirecta y 10% de falla directa."
-cover3: ../../assets/cases/rediseno-comunidadfeliz-3.png
-coverAlt3: "Design System del rediseño: escalas de color de 900 a 50 para las paletas Primary (verde), Blue, Grey, Yellow y Red."
+role: ["Diseño UX/UI"]
+tools: ["Figma", "Maze", "Miro", "Adobe Illustrator", "Adobe Photoshop", "Behance"]
+tags: ["Diseño web", "UX/UI", "Rediseño"]
+contexto: "Académico · Diplomado UX/UI, Coderhouse"
+proyecto: "ComunidadFeliz"
+meta: "Académico · Diplomado UX/UI, Coderhouse"
 behance: https://www.behance.net/gallery/253688295/Rediseno-ComunidadFeliz
-featured: false
-order: 11
-draft: true
+cover: ../../assets/cases/rediseno-comunidadfeliz-1.png
+coverAlt: "Página de inicio rediseñada de ComunidadFeliz: hero con el mensaje «Administra tu comunidad sin caos ni planillas», botones Cotizar y Solicitar Demo, y cifras de comunidades, usuarios y países."
+cover2: ../../assets/cases/rediseno-comunidadfeliz-2.png
+coverAlt2: "Resultado del tree testing de la arquitectura actual en la tarea «buscar quiénes somos»: diagrama de rutas de los participantes y gráfico donde el 70% no completó la tarea."
+cover3: ../../assets/cases/rediseno-comunidadfeliz-3.png
+coverAlt3: "Sistema de diseño: paletas de color primaria, azul, gris, amarillo y roja, cada una con tonos del 900 al 50."
+imagenesReferenciales: false
+featured: true
+order: 1
+homeOrder: 7
+draft: false
 revisadoConfidencialidad: true
 ---
 
 ## Contexto
 
-Por escribir.
+ComunidadFeliz es una plataforma para administrar condominios y comunidades. Su sitio web presentaba problemas de usabilidad, de flujo y de interfaz: la información era difícil de encontrar y no quedaba claro qué ofrecía el servicio a cada tipo de usuario. El proyecto nace como trabajo del Diplomado UX/UI de Coderhouse, con el objetivo de rediseñar el sitio aplicando un proceso UX completo.
+
+## Mi rol
+
+Desarrollé el proyecto de principio a fin: investigación, análisis, arquitectura de información, guía de estilos, sistema de diseño, prototipo funcional y pruebas de usabilidad.
 
 ## Proceso
 
-Por escribir: tree testing de la arquitectura de información actual. En la tarea 1 (buscar la información institucional, el "quiénes somos"), el 70% de los participantes falló (60% falla indirecta y 10% falla directa) y ninguno completó la tarea de forma directa.
+**Desk research.** Revisé el sitio actual con un análisis heurístico, identifiqué oportunidades de mejora y revisé la valoración y las reseñas de la app en Google Play, noticias del sector y tendencias de diseño.
+
+**Investigación con usuarios.** Hice entrevistas a residentes y administradores. Con los hallazgos armé un mapa de empatía, una user persona, un user journey map, una matriz de necesidades y un Lean UX Canvas para definir el problema y las hipótesis.
+
+**Arquitectura de información.** Evalué la arquitectura actual con tree testing. En la tarea de encontrar la información institucional («quiénes somos»), ningún participante llegó por la ruta directa y el 70% no completó la tarea. A partir de estos resultados propuse una nueva estructura de navegación. Prioricé funcionalidades con una matriz FDV (factibilidad, deseabilidad y viabilidad) y definí los recorridos con task flows y wireflows.
+
+**Identidad y sistema de diseño.** Definí el propósito de la marca con el Círculo de Oro, un manual de voz y tono, y una guía de estilos. Luego construí un sistema de diseño simplificado, acorde a la escala del proyecto, con colores, tipografía (Plus Jakarta Sans), espaciados, grillas y componentes: botones, inputs, íconos, alertas, tarjetas, barra de navegación y mega menú.
+
+**Prototipo y pruebas.** Con el sistema de diseño armé un prototipo funcional en Figma y lo validé con pruebas de usabilidad moderadas y no moderadas, con alrededor de 16 participantes y dos tareas clave.
 
 ## Decisiones clave
 
-Por escribir: design system simplificado por la escala del proyecto, enfocado en átomos y moléculas esenciales.
+- Reorganizar la navegación según los resultados del tree testing, para que cada usuario llegue más rápido a la información que busca.
+- Usar un mega menú para ordenar la oferta de servicios sin saturar la página de inicio.
+- Construir un sistema de diseño antes del prototipo, para mantener consistencia en todas las pantallas.
+- Escribir los mensajes con un tono cercano y claro, definido en el manual de voz y tono.
 
 ## Resultado
 
-Por escribir.
+En las pruebas de usabilidad, las dos tareas evaluadas se completaron con un 100% de éxito. El resultado es una propuesta de sitio más clara y ordenada, con un sistema de diseño documentado y una nueva arquitectura de información validada con usuarios.

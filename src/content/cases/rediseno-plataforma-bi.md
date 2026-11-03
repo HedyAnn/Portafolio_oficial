@@ -1,12 +1,14 @@
 ---
 title: "Rediseño de una plataforma de BI"
-summary: Nueva arquitectura de información, dashboards de alta complejidad y un sistema de diseño para toda una plataforma de analítica de retail.
+summary: "Nueva arquitectura de información, dashboards de alta complejidad y un sistema de diseño para toda una plataforma de analítica de retail."
 origin: FollowUP
 year: 2026
 format: completo
-role: [UX/UI Design, Arquitectura de información, Sistema de diseño]
-tools: [Figma, FigJam, Maze]
-tags: [Arquitectura de información, Dashboards, Sistema de diseño]
+role: ["UX/UI Design", "Arquitectura de información", "Sistema de diseño"]
+tools: ["Figma", "FigJam", "Maze", "Miro", "Notion", "YouTrack", "Slack", "HTML", "CSS y JavaScript", "librerías de componentes y de gráficos", "Claude", "Codex"]
+tags: ["Arquitectura de información", "Dashboards", "Sistema de diseño"]
+proyecto: "Plataforma de BI"
+imagenesReferenciales: true
 featured: false
 order: 5
 draft: true

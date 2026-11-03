@@ -14,6 +14,16 @@ const schema = ({ image }: SchemaContext) =>
       tags: z.array(z.string()).max(3),
       // Texto opcional para la ficha "Contexto"; si falta, se usa origen y año
       contexto: z.string().optional(),
+      // Bajada bajo el título del caso; si falta, se usa el resumen
+      lead: z.string().optional(),
+      // Proyecto al que pertenece (se muestra en la tarjeta como "Proyecto: …")
+      proyecto: z.string().optional(),
+      // Texto de la línea superior de la tarjeta; si falta, se usa origen y año
+      meta: z.string().optional(),
+      // Muestra el aviso de imágenes referenciales (recreaciones con datos ficticios)
+      imagenesReferenciales: z.boolean().default(false),
+      // Posición en el inicio (1 = tarjeta grande); sin valor, el caso queda en "ver todos"
+      homeOrder: z.number().int().optional(),
       cover: image().optional(),
       coverAlt: z.string().min(10).optional(),
       // Capturas adicionales, opcionales, bajo la portada

@@ -11,9 +11,11 @@ interface Props { lang: Lang }
 const { lang } = Astro.props;
 const t = ui[lang];
 
-// Inicio: el proyecto insignia + los 6 siguientes por orden; el resto en la lista de proyectos
+// Inicio: los casos con homeOrder (el 1 es la tarjeta grande); el resto se despliega con el botón
 const all = await getCases(lang);
-const [flagship, ...rest] = all.slice(0, 7);
+const home = all.filter((c) => c.data.homeOrder !== undefined).sort((a, b) => a.data.homeOrder! - b.data.homeOrder!);
+const [flagship, ...rest] = home;
+const extras = all.filter((c) => c.data.homeOrder === undefined);
 const total = all.length;
 
 const copy = {
@@ -26,6 +28,7 @@ const copy = {
     projects: 'Proyectos',
     projectsLead: 'Productos de datos, dashboards y procesos UX completos. Cada proyecto empieza por el problema y muestra las decisiones que tomé.',
     seeAll: (n: number) => `Ver los ${n} proyectos`,
+    seeLess: 'Ver menos proyectos',
     process: 'Cómo trabajo',
     processLead: 'Sigo el proceso completo de UX/UI, del discovery a la entrega, y lo ajusto al tamaño de cada proyecto. Cuando la evidencia lo justifica, retomo una etapa anterior.',
     aboutTitle: 'De UX/UI a Product Design',
@@ -48,6 +51,7 @@ const copy = {
     projects: 'Projects',
     projectsLead: 'Data products, dashboards and end-to-end UX processes. Each project starts with the problem and shows the decisions I made.',
     seeAll: (n: number) => `See all ${n} projects`,
+    seeLess: 'See fewer projects',
     process: 'How I work',
     processLead: 'I follow the full UX/UI process, from discovery to delivery, and adapt it to the size of each project. When the evidence justifies it, I return to an earlier stage.',
     aboutTitle: 'From UX/UI to Product Design',
@@ -102,6 +106,7 @@ const hlIndex = n;
     </div>
   </section>
   <script is:inline src={withBase('/js/hero-fx.js')} defer></script>
+  <script is:inline src={withBase('/js/more-projects.js')} defer></script>
 
   <section id="casos" class="section section-after-hero" data-spy="casos" aria-labelledby="casos-title">
     <div class="container">
@@ -112,8 +117,12 @@ const hlIndex = n;
       {flagship && <CaseCard entry={flagship} wide />}
       <div class="case-grid">
         {rest.map((entry) => <CaseCard entry={entry} />)}
+        {extras.map((entry) => <CaseCard entry={entry} extra />)}
       </div>
-      <p class="more"><a class="link" href={url('projects', lang)}>{copy.seeAll(total)}</a></p>
+      <p class="more">
+        <button type="button" class="link more-toggle" aria-expanded="false" data-more-toggle data-label-more={copy.seeAll(total)} data-label-less={copy.seeLess} hidden>{copy.seeAll(total)}</button>
+        <a class="link" href={url('projects', lang)} data-more-fallback>{copy.seeAll(total)}</a>
+      </p>
     </div>
   </section>
 
@@ -298,6 +307,8 @@ const hlIndex = n;
   @media (min-width: 760px) { .case-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (min-width: 1100px) { .case-grid { grid-template-columns: repeat(3, 1fr); } }
   .more { margin-top: var(--space-6); }
+  .more-toggle { background: none; border: 0; padding: 0; font: inherit; font-weight: 600; cursor: pointer; }
+  .more-toggle[hidden], .more [hidden] { display: none; }
 
   /* ---------- Proceso ---------- */
   .process {

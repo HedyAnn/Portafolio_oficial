@@ -1,17 +1,20 @@
 ---
-title: "A fair goal for every salesperson"
-summary: "Redesign of the report that sets goals for each salesperson based on their in-store opportunity and working hours, with new views, flows and gamification."
+title: "Fair Goal report"
+summary: "A dashboard that splits the store's goal according to each salesperson's shift and day, and shows attainment and performance in one place."
 origin: FollowUP
 year: 2026
 format: completo
 role: ["Product Design and UX/UI: discovery, interviews, design and usability testing"]
-contexto: "BI platform · Retail analytics SaaS, 2026"
-tools: [Figma]
+tools: ["Figma", "Miro", "Notion", "YouTrack", "Slack", "HTML", "CSS and JavaScript", "component and chart libraries", "Claude", "Codex"]
 tags: [Dashboards, Data viz, Retail]
+contexto: "BI platform · Retail analytics SaaS, 2026"
+proyecto: "BI platform"
 cover: ../../assets/cases/meta-justa.png
-coverAlt: "Fair Goal report: sales attainment by group, with a ranking of the top 5 performing groups, a bar chart of sales versus goal per group, and a detail table with attainment, goal, sales, hours, items, tickets and average ticket. Fictional data."
+coverAlt: "Fair Goal report: ranking of the 5 groups with the best attainment, bar chart of sales versus goal by group, and a detail table with attainment, goal, sales, hours, items, tickets and average ticket. Fictional data."
+imagenesReferenciales: true
 featured: true
-order: 3
+order: 4
+homeOrder: 6
 draft: false
 revisadoConfidencialidad: true
 ---

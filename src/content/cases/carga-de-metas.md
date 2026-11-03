@@ -1,18 +1,21 @@
 ---
-title: Carga de Metas
-summary: Módulo que permite a cada cliente cargar sus metas y completar automáticamente los KPIs a partir de los datos que declara.
+title: "Carga de Metas"
+summary: "Módulo que permite a cada cliente cargar sus metas y completar automáticamente los KPIs a partir de los datos que declara."
 origin: FollowUP
 year: 2026
 format: completo
-role: [Product Design, Discovery, Modelo de datos, Especificación funcional, Prototipado]
-tools: [Figma, FigJam, Miro, Stitch, Notion, Codex, Claude, GitHub, YouTrack]
-tags: [Data & BI, Reglas de negocio, B2B]
+role: ["Product Design", "Discovery", "Modelo de datos", "Especificación funcional", "Prototipado"]
+tools: ["Figma", "FigJam", "Stitch", "Miro", "Notion", "YouTrack", "Slack", "HTML", "CSS y JavaScript", "librerías de componentes y de gráficos", "Claude", "Codex", "GitHub"]
+tags: ["Data & BI", "Reglas de negocio", "B2B"]
+proyecto: "Plataforma de BI"
 cover: ../../assets/cases/carga-de-metas.png
 coverAlt: Vista por tienda del módulo de carga de metas, con el gráfico de meta diaria contra la venta del año anterior, la meta del período, los días cargados y los botones para subir y descargar metas. Datos ficticios.
 cover2: ../../assets/cases/carga-de-metas-2.png
 coverAlt2: "Tabla de metas por semana retail, con una semana desplegada que muestra el detalle día a día: meta de venta, entradas, artículos por ticket, tasa de conversión, tasa de captación y ticket promedio. Datos ficticios."
+imagenesReferenciales: true
 featured: true
-order: 1
+order: 2
+homeOrder: 4
 draft: false
 revisadoConfidencialidad: true
 ---

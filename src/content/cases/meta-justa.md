@@ -1,17 +1,20 @@
 ---
-title: Una meta justa para cada vendedor
-summary: Rediseño del reporte que asigna metas por vendedor según su oportunidad en tienda y sus horarios, con nuevas vistas, flujos y gamificación.
+title: "Reporte de Meta Justa"
+summary: "Dashboard que reparte la meta de la tienda según el turno y el día de cada vendedor, y muestra el cumplimiento y el desempeño en un solo lugar."
 origin: FollowUP
 year: 2026
 format: completo
 role: ["Product Design y UX/UI: discovery, entrevistas, diseño y pruebas de usabilidad"]
+tools: ["Figma", "Miro", "Notion", "YouTrack", "Slack", "HTML", "CSS y JavaScript", "librerías de componentes y de gráficos", "Claude", "Codex"]
+tags: ["Dashboards", "Data viz", "Retail"]
 contexto: "Plataforma de BI · SaaS de analítica retail, 2026"
-tools: [Figma]
-tags: [Dashboards, Data viz, Retail]
+proyecto: "Plataforma de BI"
 cover: ../../assets/cases/meta-justa.png
-coverAlt: "Reporte Meta Justa: cumplimiento de venta por grupo, con ranking de los 5 grupos con mejor desempeño, gráfico de barras de venta versus meta por grupo y tabla de detalle con cumplimiento, meta, venta, horas, artículos, tickets y ticket promedio. Datos ficticios."
+coverAlt: "Reporte Meta Justa: ranking de los 5 grupos con mejor cumplimiento, gráfico de barras de venta frente a meta por grupo y tabla de detalle con cumplimiento, meta, venta, horas, artículos, tickets y ticket promedio. Datos ficticios."
+imagenesReferenciales: true
 featured: true
-order: 3
+order: 4
+homeOrder: 6
 draft: false
 revisadoConfidencialidad: true
 ---

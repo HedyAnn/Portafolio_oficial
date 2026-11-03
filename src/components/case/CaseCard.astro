@@ -7,11 +7,12 @@ import { caseUrl, getLang, ui } from '../../i18n';
 interface Props {
   entry: CaseEntry;
   wide?: boolean;
+  extra?: boolean;
   headingLevel?: 'h2' | 'h3';
 }
 
-const { entry, wide = false, headingLevel = 'h3' } = Astro.props;
-const { title, summary, tags, origin, year, cover, coverAlt } = entry.data;
+const { entry, wide = false, extra = false, headingLevel = 'h3' } = Astro.props;
+const { title, summary, tags, origin, year, cover, coverAlt, meta, proyecto } = entry.data;
 const Heading = headingLevel;
 // El nombre de la empresa no aparece como marca en las tarjetas
 const lang = getLang(Astro.url);
@@ -19,7 +20,6 @@ const originLabel = ui[lang].origin[origin];
 const variants = {
   'carga-de-metas': 'grid',
   'meta-justa': 'bars',
-  'recorridos-multinivel': 'flow',
   'eat-japan': 'phone',
   'este-portafolio': 'system',
   'rediseno-plataforma-bi': 'dashboard',
@@ -27,19 +27,21 @@ const variants = {
   'control-dotacion': 'balance',
   'carga-de-turnos': 'calendar',
   'eat-japan-branding': 'brand',
+  'tracking-sistema-diseno': 'system',
 } as const;
 const variant = variants[entry.id as keyof typeof variants] ?? 'system';
 ---
 
-<article class:list={['case-card', { wide }]}>
+<article class:list={['case-card', { wide, extra }]} hidden={extra || undefined}>
   <div class="media">
     {cover && coverAlt ? <Image src={cover} alt={coverAlt} width={960} loading="lazy" /> : <CaseVisual variant={variant} />}
   </div>
   <div class="body">
-    <p class="meta">{originLabel}, {year}</p>
+    <p class="meta">{meta ?? `${originLabel}, ${year}`}</p>
     <Heading class="title">
       <a href={caseUrl(entry.id, lang)}>{title}</a>
     </Heading>
+    {proyecto && <p class="project">{lang === 'en' ? 'Project' : 'Proyecto'}: {proyecto}</p>}
     <p class="summary">{summary}</p>
     <ul class="tags">{tags.map((t) => <li class="tag">{t}</li>)}</ul>
   </div>
@@ -91,7 +93,9 @@ const variant = variants[entry.id as keyof typeof variants] ?? 'system';
   .title a::after { content: ''; position: absolute; inset: 0; border-radius: inherit; }
   .title a:focus-visible { outline: none; }
   .case-card:has(.title a:focus-visible) { outline: 2px solid var(--focus); outline-offset: 4px; }
+  .project { margin-top: -0.35rem; color: var(--accent); font-size: 0.9375rem; font-weight: 600; }
   .summary { color: var(--text-muted); }
+  .case-card.extra[hidden] { display: none; }
   .tags { margin-top: var(--space-1); }
 
   @media (min-width: 900px) {

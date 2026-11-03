@@ -1,12 +1,14 @@
 ---
-title: "Clientes por vendedor"
-summary: Reporte que muestra cuántos clientes atiende cada vendedor en tienda, para entender la carga real del equipo de ventas.
+title: "Reporte CPV Clientes por vendedor"
+summary: "Reporte que muestra cuántos clientes atiende cada vendedor en tienda, para entender la carga real del equipo de ventas."
 origin: FollowUP
 year: 2026
 format: completo
-role: [Product Design, Data viz]
-tools: [Figma]
-tags: [Dashboards, Data viz, Retail]
+role: ["Product Design", "Data viz"]
+tools: ["Figma", "Miro", "Notion", "YouTrack", "Slack", "HTML", "CSS y JavaScript", "librerías de componentes y de gráficos", "Claude", "Codex"]
+tags: ["Dashboards", "Data viz", "Retail"]
+proyecto: "Plataforma de BI"
+imagenesReferenciales: true
 featured: false
 order: 7
 draft: true

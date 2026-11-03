@@ -8,7 +8,7 @@ role: [UX Research, UX/UI Design, Sistema de diseño, Desarrollo]
 tools: [Figma, Claude, Astro, TypeScript]
 tags: [Proceso UX, Sistema de diseño, Accesibilidad]
 featured: false
-order: 10
+order: 14
 draft: true
 revisadoConfidencialidad: true
 ---
