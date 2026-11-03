@@ -12,6 +12,8 @@ const schema = ({ image }: SchemaContext) =>
       role: z.array(z.string()).min(1),
       tools: z.array(z.string()).default([]),
       tags: z.array(z.string()).max(3),
+      // Texto opcional para la ficha "Contexto"; si falta, se usa origen y año
+      contexto: z.string().optional(),
       cover: image().optional(),
       coverAlt: z.string().min(10).optional(),
       // Capturas adicionales, opcionales, bajo la portada
@@ -19,6 +21,8 @@ const schema = ({ image }: SchemaContext) =>
       coverAlt2: z.string().min(10).optional(),
       cover3: image().optional(),
       coverAlt3: z.string().min(10).optional(),
+      // Link opcional al proyecto publicado afuera (por ejemplo, Behance)
+      behance: z.string().url().optional(),
       featured: z.boolean().default(false),
       order: z.number().int(),
       draft: z.boolean().default(true),

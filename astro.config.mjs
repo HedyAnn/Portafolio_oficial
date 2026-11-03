@@ -3,7 +3,7 @@ import { defineConfig } from 'astro/config';
 
 export default defineConfig({
   // En GitHub Pages el flujo de despliegue define SITE_URL y BASE_PATH; en local se usan estos valores.
-  site: process.env.SITE_URL || 'https://tudominio.cl',
+  site: process.env.SITE_URL || 'https://www.hedy.cl',
   base: process.env.BASE_PATH || '/',
   trailingSlash: 'always',
   build: {

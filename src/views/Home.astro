@@ -93,7 +93,7 @@ const hlIndex = n;
         </p>
         <div class="cta-row">
           <a class="btn btn-primary btn-fx" href="#casos" data-magnetic>{copy.seeProjects}<span class="arrow" aria-hidden="true">→</span></a>
-          <a class="btn btn-secondary" href={site.cv} download>{t.cvLong}</a>
+          <a class="btn btn-secondary" href={t.cvUrl} download>{t.cvLong}</a>
         </div>
       </div>
       <div class="hero-visual">
@@ -151,7 +151,7 @@ const hlIndex = n;
       <div class="cta-row">
         <a class="btn btn-primary" href={`mailto:${site.email}`}>{t.email}</a>
         {site.linkedin && <a class="btn btn-secondary" href={site.linkedin} target="_blank" rel="noopener noreferrer">{t.linkedin}</a>}
-        <a class="btn btn-quiet" href={site.cv} download>{t.cv}</a>
+        <a class="btn btn-quiet" href={t.cvUrl} download>{t.cv}</a>
       </div>
     </div>
   </section>

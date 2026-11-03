@@ -16,7 +16,7 @@ const year = new Date().getFullYear();
     <nav aria-label={t.footerLabel}>
       <ul>
         {nav.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
-        <li><a href={site.cv} download>CV</a></li>
+        <li><a href={t.cvUrl} download>CV</a></li>
         {site.linkedin && <li><a href={site.linkedin} rel="noopener noreferrer" target="_blank">LinkedIn</a></li>}
         {site.behance && <li><a href={site.behance} rel="noopener noreferrer" target="_blank">Behance</a></li>}
       </ul>

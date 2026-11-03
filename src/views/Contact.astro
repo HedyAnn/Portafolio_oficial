@@ -19,7 +19,7 @@ const c = {
       <p class="lead">{c.lead}</p>
       <p class="mail"><a class="link" href={`mailto:${site.email}`}>{site.email}</a></p>
       <ul class="channels">
-        <li><a class="btn btn-secondary" href={site.cv} download>{t.cvLong}</a></li>
+        <li><a class="btn btn-secondary" href={t.cvUrl} download>{t.cvLong}</a></li>
         {site.linkedin && <li><a class="btn btn-quiet" href={site.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a></li>}
         {site.behance && <li><a class="btn btn-quiet" href={site.behance} target="_blank" rel="noopener noreferrer">Behance</a></li>}
       </ul>

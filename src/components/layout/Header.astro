@@ -70,7 +70,7 @@ const switchHref = translatePath(Astro.url, other);
     </ul>
     <div class="menu-actions">
       <a class="btn btn-primary" href={`mailto:${site.email}`}>{t.email}</a>
-      <a class="btn btn-quiet" href={site.cv} download>{t.cvLong}</a>
+      <a class="btn btn-quiet" href={t.cvUrl} download>{t.cvLong}</a>
     </div>
   </div>
 </header>

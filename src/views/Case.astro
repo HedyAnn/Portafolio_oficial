@@ -8,12 +8,12 @@ import { caseUrl, ui, url, type Lang } from '../i18n';
 
 interface Props { lang: Lang; entry: CaseEntry; next?: CaseEntry }
 const { lang, entry, next } = Astro.props;
-const { title, summary, role, tools, year, origin, draft, cover, coverAlt, cover2, coverAlt2, cover3, coverAlt3 } = entry.data;
+const { title, summary, role, tools, year, origin, draft, behance, contexto, cover, coverAlt, cover2, coverAlt2, cover3, coverAlt3 } = entry.data;
 const { Content } = await render(entry);
 const originLabel = ui[lang].origin[origin];
 const c = {
-  es: { crumbs: 'Ruta', projects: 'Proyectos', role: 'Rol', context: 'Contexto', tools: 'Herramientas', draft: 'Proyecto en redacción: el contenido final está en camino.', talk: 'Conversemos sobre este proyecto', next: 'Siguiente proyecto' },
-  en: { crumbs: 'Breadcrumb', projects: 'Projects', role: 'Role', context: 'Context', tools: 'Tools', draft: 'Case study in progress: the full write-up is on its way.', talk: "Let's talk about this project", next: 'Next project' },
+  es: { crumbs: 'Ruta', projects: 'Proyectos', role: 'Rol', context: 'Contexto', tools: 'Herramientas', draft: 'Proyecto en redacción: el contenido final está en camino.', talk: 'Conversemos sobre este proyecto', next: 'Siguiente proyecto', behance: 'Ver proyecto completo en Behance', newTab: '(se abre en una pestaña nueva)' },
+  en: { crumbs: 'Breadcrumb', projects: 'Projects', role: 'Role', context: 'Context', tools: 'Tools', draft: 'Case study in progress: the full write-up is on its way.', talk: "Let's talk about this project", next: 'Next project', behance: 'See the full project on Behance', newTab: '(opens in a new tab)' },
 }[lang];
 ---
 
@@ -29,6 +29,15 @@ const c = {
         <h1 class="h1">{title}</h1>
         <p class="lead">{summary}</p>
         {draft && <p class="draft">{c.draft}</p>}
+        {behance && (
+          <p class="case-link">
+            <a class="btn btn-secondary" href={behance} target="_blank" rel="noopener noreferrer">
+              {c.behance}
+              <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M14 5h5v5M19 5l-8 8M18 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span class="visually-hidden">{c.newTab}</span>
+            </a>
+          </p>
+        )}
       </header>
       <div class="case-body">
         <aside class:list={['case-aside', { 'has-two': cover2 && coverAlt2 }]}>
@@ -49,7 +58,7 @@ const c = {
           )}
           <dl class="ficha">
             <div><dt>{c.role}</dt><dd>{role.join(', ')}</dd></div>
-            <div><dt>{c.context}</dt><dd>{originLabel}, {year}</dd></div>
+            <div><dt>{c.context}</dt><dd>{contexto ?? `${originLabel}, ${year}`}</dd></div>
             {tools.length > 0 && <div><dt>{c.tools}</dt><dd>{tools.join(', ')}</dd></div>}
           </dl>
         </aside>
@@ -74,6 +83,8 @@ const c = {
   /* Encabezado: título y, debajo, el resumen a todo el ancho de la página */
   .case-head { display: grid; gap: var(--space-5); margin-bottom: var(--space-12); }
   .case-head .lead { max-width: none; }
+  .case-link { margin: 0; }
+  .case-link .btn { display: inline-flex; align-items: center; gap: var(--space-2); }
   @media (min-width: 900px) {
     .case-head .h1 { font-size: clamp(3rem, 3.6vw, 3.75rem); }
     .case-head .lead { font-size: 1.25rem; }

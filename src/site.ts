@@ -6,8 +6,8 @@ export const site = {
   name: 'Hedy Herrada',
   email: 'hedy.herrada@gmail.com', // reemplazar por un alias del dominio al publicarlo
   linkedin: 'https://www.linkedin.com/in/hedy-herrada-75365b147/',
-  behance: 'https://www.behance.net/gallery/242380291/EAT-Japan-App-movil-Presentacion-UX', // reemplazar por la URL del perfil
-  cv: withBase('/cv/hedy-herrada-cv.pdf'),
+  behance: 'https://www.behance.net/hedyherrada',
+  // Los CV (ES y EN) se definen por idioma en src/i18n.ts (cvUrl)
 } as const;
 
 // Textos, navegación y rutas por idioma: ver src/i18n.ts
