@@ -10,4 +10,8 @@ export default defineConfig({
     // CSS en archivos propios: compatible con una CSP estricta (style-src 'self')
     inlineStylesheets: 'never',
   },
+  vite: {
+    // Fuentes e imágenes siempre como archivos, nunca incrustadas como data: (la CSP usa font-src 'self')
+    build: { assetsInlineLimit: 0 },
+  },
 });
