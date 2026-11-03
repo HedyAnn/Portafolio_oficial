@@ -10,7 +10,14 @@ const c = {
   es: {
     title: 'Sobre mí',
     description: 'Trayectoria y forma de trabajar de Hedy Herrada, Product Designer.',
-    lead: 'Soy Hedy, Product Designer en Santiago de Chile. Diseño productos de datos para retail: interfaces complejas que se entienden sin manual y reglas de negocio documentadas antes de llegar a desarrollo.',
+    lead: 'Soy Hedy Herrada, Product Designer en Santiago de Chile. Diseño productos de datos para retail: dashboards, reportes y funcionalidades de analítica que traducen reglas de negocio en interfaces claras. Trabajo el proceso de diseño completo, desde discovery hasta pruebas con usuarios, con una base técnica en programación y ciberseguridad.',
+    bioTitle: 'Perfil',
+    bio: [
+      'Soy Product Designer en una plataforma SaaS de analítica para retail. Empecé como UX/UI Designer en el rediseño de la plataforma de BI, donde trabajé la arquitectura de información, la navegación, los dashboards y el sistema de diseño. Hoy diseño modelos de datos, especificaciones funcionales y la UI/UX de nuevas funcionalidades, como la asignación de metas por vendedor y el control de dotación por tienda.',
+      'Sigo el proceso de diseño completo: discovery, user research con usuarios y stakeholders, definición, prototipado y pruebas de usabilidad. Trabajo con Scrum junto al equipo de desarrollo y al Product Owner, participo en los refinamientos técnicos y tomo decisiones de alcance y prioridad. Documento las reglas de negocio antes de que lleguen a desarrollo, para que el equipo construya sobre una definición clara.',
+      'Mi formación en ciberseguridad y programación me permite evaluar factibilidad con el equipo técnico y construir prototipos funcionales en HTML, CSS, JavaScript y Python. Uso Claude y Codex para llevar esos prototipos a código y validarlos con usuarios antes del desarrollo.',
+      'Además desarrollo proyectos independientes, como el rediseño de ComunidadFeliz. Trabajo con Figma, FigJam, Miro, Maze, Notion, YouTrack y Slack. Inglés nivel C1 (EF SET).',
+    ],
     pathTitle: 'Trayectoria',
     path: [
       { when: '2026 – hoy', what: 'Product Designer UX/UI', where: 'SaaS de analítica para retail', note: 'Modelos de datos, especificaciones funcionales y dashboards, con decisiones de alcance y prioridad.' },
@@ -22,7 +29,14 @@ const c = {
   en: {
     title: 'About',
     description: 'Background and way of working of Hedy Herrada, Product Designer.',
-    lead: "I'm Hedy, a Product Designer based in Santiago, Chile. I design data products for retail: complex screens that make sense without a manual, and business rules documented before they reach development.",
+    lead: "I'm Hedy Herrada, a Product Designer based in Santiago, Chile. I design data products for retail: dashboards, reports and analytics features that turn business rules into clear interfaces. I work through the full design process, from discovery to user testing, with a technical background in programming and cybersecurity.",
+    bioTitle: 'Profile',
+    bio: [
+      "I'm a Product Designer at a retail analytics SaaS platform. I started as a UX/UI Designer on the redesign of the BI platform, working on information architecture, navigation, dashboards and the design system. Today I design data models, functional specifications and the UI/UX of new features, such as sales target allocation per salesperson and staffing control per store.",
+      'I follow the full design process: discovery, user research with users and stakeholders, definition, prototyping and usability testing. I work in Scrum alongside the development team and the Product Owner, take part in technical refinements and make scope and priority decisions. I document business rules before they reach development, so the team builds on a clear definition.',
+      'My background in cybersecurity and programming lets me assess feasibility with engineers and build working prototypes in HTML, CSS, JavaScript and Python. I use Claude and Codex to take those prototypes into code and validate them with users before development.',
+      'I also work on independent projects, such as the ComunidadFeliz redesign. I work with Figma, FigJam, Miro, Maze, Notion, YouTrack and Slack. English level C1 (EF SET).',
+    ],
     pathTitle: 'Background',
     path: [
       { when: '2026 – present', what: 'UX/UI Product Designer', where: 'Retail analytics SaaS', note: 'Data models, functional specifications and dashboards, with scope and priority decisions.' },
@@ -47,6 +61,10 @@ const c = {
           {site.linkedin && <a class="btn btn-secondary" href={site.linkedin} target="_blank" rel="noopener noreferrer">{t.linkedin}</a>}
         </div>
       </header>
+      <section aria-labelledby="perfil" class="bio">
+        <h2 id="perfil" class="h2">{c.bioTitle}</h2>
+        {c.bio.map((p) => <p>{p}</p>)}
+      </section>
       <section aria-labelledby="trayectoria">
         <h2 id="trayectoria" class="h2">{c.pathTitle}</h2>
         <ol class="timeline">
@@ -67,6 +85,8 @@ const c = {
 <style>
   .about { display: grid; gap: var(--space-16); }
   .head { display: grid; gap: var(--space-6); max-width: 68ch; }
+  .bio { display: grid; gap: var(--space-4); max-width: 68ch; }
+  .bio .h2 { margin-bottom: var(--space-2); }
   .cta-row { display: flex; flex-wrap: wrap; gap: var(--space-3); }
   .timeline { list-style: none; margin: var(--space-8) 0 0; padding: 0 0 0 var(--space-6); border-left: 3px solid; border-image: var(--gradient-brand) 1; display: grid; gap: var(--space-8); }
   .timeline li { position: relative; display: grid; gap: var(--space-1); max-width: 60ch; }
