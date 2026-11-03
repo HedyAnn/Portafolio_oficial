@@ -8,8 +8,8 @@ interface Props { lang: Lang }
 const { lang } = Astro.props;
 const cases = await getCases(lang);
 const c = {
-  es: { title: 'Proyectos', description: 'Proyectos de Product Design y UX/UI de Hedy Herrada.', lead: 'Productos de datos, dashboards y procesos UX completos. Las pantallas usan datos ficticios.' },
-  en: { title: 'Projects', description: 'Product Design and UX/UI projects by Hedy Herrada.', lead: 'Data products, dashboards and end-to-end UX processes. Screens use fictional data.' },
+  es: { title: 'Proyectos', description: 'Proyectos de Product Design y UX/UI de Hedy Herrada.', lead: 'Productos de datos, dashboards y procesos UX completos.' },
+  en: { title: 'Projects', description: 'Product Design and UX/UI projects by Hedy Herrada.', lead: 'Data products, dashboards and end-to-end UX processes.' },
 }[lang];
 ---
 
