@@ -10,8 +10,8 @@ tags: ["Dashboards", "Data viz", "Tracking"]
 contexto: "Tracking platform · Retail analytics SaaS"
 proyecto: "Tracking platform"
 meta: "Retail analytics SaaS"
-cover: ../../assets/cases/reporte-overview-1v3.webp
-coverAlt: "Overview of the tracking platform: operational summary with visitors per store, attention rate and conversion rate, a highlighted insight, and visitor volume and conversion. Fictional data."
+cover: ../../assets/cases/reporte-overview-1v4.png
+coverAlt: "Overview of the tracking platform: operational summary with retention, attention, conversion and attention-time indicators, a highlighted insight, and daily charts of visitors, attention rate and conversion rates. Fictional data."
 cover2: ../../assets/cases/reporte-overview-1v2.webp
 coverAlt2: "Overview of the tracking platform: weekly summary with visitors per week, attention rate and conversion rate, and weekly visitor volume. Fictional data."
 cover3: ../../assets/cases/reporte-overview-2.webp

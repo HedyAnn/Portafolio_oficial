@@ -10,8 +10,8 @@ tags: ["Dashboards", "Data viz", "Tracking"]
 contexto: "Plataforma de Tracking · SaaS de analítica retail"
 proyecto: "Plataforma de Tracking"
 meta: "SaaS de analítica retail"
-cover: ../../assets/cases/reporte-overview-1v3.webp
-coverAlt: "Vista Overview de la plataforma de tracking: resumen operacional con visitantes por tienda, tasa de atención y tasa de conversión, un insight destacado y el volumen de visitantes y conversión. Datos ficticios."
+cover: ../../assets/cases/reporte-overview-1v4.png
+coverAlt: "Vista Overview de la plataforma de tracking: resumen operacional con indicadores de retención, atención, conversión y tiempos de atención, un insight destacado y gráficos diarios de visitantes, tasa de atención y tasas de conversión. Datos ficticios."
 cover2: ../../assets/cases/reporte-overview-1v2.webp
 coverAlt2: "Vista Overview de la plataforma de tracking: resumen semanal con visitantes por semana, tasa de atención y tasa de conversión, y volumen semanal de visitantes. Datos ficticios."
 cover3: ../../assets/cases/reporte-overview-2.webp
