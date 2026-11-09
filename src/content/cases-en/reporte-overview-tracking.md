@@ -12,6 +12,8 @@ proyecto: "Tracking platform"
 meta: "Retail analytics SaaS"
 cover: ../../assets/cases/reporte-overview-mockup.webp
 coverAlt: "Mockup of the Overview report on a laptop: tracking platform view with a store's operational summary, its retention, attention and conversion indicators, and daily charts; on the left, its benefits: integrated view, evolution and status, and greater efficiency. Fictional data."
+cover2: ../../assets/cases/reporte-overview-conversion-mockup.webp
+coverAlt2: "Mockup of the Overview report on a laptop: conversion and attention rate by retail week and by store zone, and a table showing the evolution by zone; on the left, its benefits: performance over time, analysis by zone and indicator detail. Fictional data."
 imagenesReferenciales: true
 featured: true
 order: 9
