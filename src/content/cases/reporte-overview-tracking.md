@@ -12,8 +12,6 @@ proyecto: "Plataforma de Tracking"
 meta: "SaaS de analítica retail"
 cover: ../../assets/cases/reporte-overview-mockup.webp
 coverAlt: "Mockup del Reporte overview en un laptop: vista de la plataforma de tracking con el resumen operacional de una tienda, sus indicadores de retención, atención y conversión, y gráficos diarios; a la izquierda, sus beneficios: visión integral, evolución y estado, y más eficiencia. Datos ficticios."
-cover2: ../../assets/cases/reporte-overview-2.webp
-coverAlt2: "Vista Overview: conversión y tasa de atención por semana retail y por zona de la tienda, y tabla de evolución por zona. Datos ficticios."
 imagenesReferenciales: true
 featured: true
 order: 9
