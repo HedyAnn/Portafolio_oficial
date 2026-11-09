@@ -22,7 +22,7 @@ def fix_url(u, pre):
         p = p + 'index.html'
     return pre + p + (qsep + query if qsep else '') + (sep + frag if sep else '')
 
-attr = re.compile(r'(\s(?:href|src|action|poster|data-src)=")([^"]*)(")')
+attr = re.compile(r'(\s(?:href|src|action|poster|data-src|data-zoom)=")([^"]*)(")')
 srcset = re.compile(r'(\ssrcset=")([^"]*)(")')
 cssurl = re.compile(r'url\((["\']?)(/[^)"\']+)\1\)')
 
