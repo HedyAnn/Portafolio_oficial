@@ -11,7 +11,7 @@ contexto: "Tracking platform · Retail analytics SaaS"
 proyecto: "Tracking platform"
 meta: "Retail analytics SaaS"
 cover: ../../assets/cases/bitacora-mockup-1.webp
-coverAlt: "Mockup of the activity log on a laptop: January-to-October timeline with the brand displayed in each store zone, with filters by store, zone and floor; on the left, its description: recording and tracking the type of product displayed in each zone. Fictional data."
+coverAlt: "Mockup of the activity log on a laptop: January-to-October timeline with the brand displayed in each store zone, with filters by store, zone and floor; on the left, its benefits: history by zone, tracking by category and greater traceability. Fictional data."
 cover2: ../../assets/cases/bitacora-mockup-2.webp
 coverAlt2: "Mockup of the activity log configuration on a laptop: categories, table of zones with their current category, and a panel to register a change with a start date and the zone's history; on the left, its benefits: zone management, change history and analysis with context. Fictional data."
 imagenesReferenciales: true

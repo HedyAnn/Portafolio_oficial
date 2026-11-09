@@ -11,7 +11,7 @@ contexto: "Plataforma de Tracking · SaaS de analítica retail"
 proyecto: "Plataforma de Tracking"
 meta: "SaaS de analítica retail"
 cover: ../../assets/cases/bitacora-mockup-1.webp
-coverAlt: "Mockup de la Bitácora en un laptop: línea de tiempo de enero a octubre con la marca exhibida en cada zona de una tienda, con filtros por tienda, zona y piso; a la izquierda, su descripción: registro y seguimiento del tipo de producto exhibido en cada zona. Datos ficticios."
+coverAlt: "Mockup de la Bitácora en un laptop: línea de tiempo de enero a octubre con la marca exhibida en cada zona de una tienda, con filtros por tienda, zona y piso; a la izquierda, sus beneficios: historial por zona, seguimiento por categoría y mayor trazabilidad. Datos ficticios."
 cover2: ../../assets/cases/bitacora-mockup-2.webp
 coverAlt2: "Mockup de la configuración de la Bitácora en un laptop: categorías, tabla de zonas con su categoría actual y panel para registrar un cambio con fecha de vigencia e historial de la zona; a la izquierda, sus beneficios: gestión por zonas, historial de cambios y análisis con contexto. Datos ficticios."
 imagenesReferenciales: true
