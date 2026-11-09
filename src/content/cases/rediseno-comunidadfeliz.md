@@ -12,8 +12,8 @@ contexto: "Académico · Diplomado UX/UI, Coderhouse"
 proyecto: "ComunidadFeliz"
 meta: "Académico · Diplomado UX/UI, Coderhouse"
 behance: https://www.behance.net/gallery/253688295/Rediseno-ComunidadFeliz
-cover: ../../assets/cases/rediseno-comunidadfeliz-1.png
-coverAlt: "Página de inicio rediseñada de ComunidadFeliz: hero con el mensaje «Administra tu comunidad sin caos ni planillas», botones Cotizar y Solicitar Demo, y cifras de comunidades, usuarios y países."
+cover: ../../assets/cases/rediseno-comunidadfeliz-mockup.webp
+coverAlt: "Mockup del rediseño web de ComunidadFeliz en un laptop: página de inicio con el mensaje «Administra tu comunidad sin caos ni planillas», botones Cotizar y Solicitar Demo, y cifras de comunidades, usuarios y países; a la izquierda, el objetivo, el enfoque y el resultado del proyecto."
 cover2: ../../assets/cases/rediseno-comunidadfeliz-2.png
 coverAlt2: "Resultado del tree testing de la arquitectura actual en la tarea «buscar quiénes somos»: diagrama de rutas de los participantes y gráfico donde el 70% no completó la tarea."
 cover3: ../../assets/cases/rediseno-comunidadfeliz-3.png
