@@ -8,8 +8,10 @@ role: ["UX/UI y Product Design: discovery, diseño, prototipado y seguimiento ha
 tools: ["Figma", "Miro", "Notion", "YouTrack", "Slack", "HTML", "CSS y JavaScript", "librerías de componentes y de gráficos", "Claude", "Codex"]
 tags: ["B2B", "Formularios", "Operaciones"]
 proyecto: "Plataforma de BI"
-cover: ../../assets/cases/carga-de-turnos-mockup-2.webp
-coverAlt: "Mockup de la generación de turnos en un laptop: lista de vendedores, grilla semanal con turnos de mañana, tarde, full day o libre, cobertura diaria, selector de turnos y copia desde otra semana; a la izquierda, sus beneficios: conexión con otros reportes, mayor precisión y gestión centralizada. Datos ficticios."
+cover: ../../assets/cases/carga-de-turnos-mockup-1.webp
+coverAlt: "Mockup de Carga de turnos en un laptop: estado de carga semanal de 300 semanas, tiendas que requieren atención urgente, carga y descarga de turnos, y tabla por tienda con el estado de cada semana; a la izquierda, sus beneficios: conexión con otros reportes, mayor precisión y gestión centralizada. Datos ficticios."
+cover2: ../../assets/cases/carga-de-turnos-mockup-2.webp
+coverAlt2: "Mockup de la generación de turnos en un laptop: lista de vendedores, grilla semanal con turnos de mañana, tarde, full day o libre, cobertura diaria, selector de turnos y copia desde otra semana; a la izquierda, sus beneficios: conexión con otros reportes, mayor precisión y gestión centralizada. Datos ficticios."
 imagenesReferenciales: true
 featured: true
 order: 3
