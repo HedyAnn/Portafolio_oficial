@@ -12,10 +12,8 @@ proyecto: "Tracking platform"
 meta: "Retail analytics SaaS"
 cover: ../../assets/cases/heatmap-mockup.webp
 coverAlt: "Mockup of the heatmap on a laptop: store floors stacked in perspective with the zones of highest attention concentration, a floor panel with unique and retained visitors, and an opacity control; on the left, its benefits: in-store attention, visitor traffic and single- or multi-floor stores. Fictional data."
-cover2: ../../assets/cases/heatmap-1v2.webp
-coverAlt2: "Heatmap in aggregated view: the store floors stacked in perspective with the zones of highest attention concentration, and a summary of unique and retained visitors per floor. Fictional data."
-cover3: ../../assets/cases/heatmap-2v2.webp
-coverAlt3: "Ground floor heatmap over the store floor plan, with the most active zones highlighted and the floor selector on the left. Fictional data."
+cover2: ../../assets/cases/heatmap-2v2.webp
+coverAlt2: "Ground floor heatmap over the store floor plan, with the most active zones highlighted and the floor selector on the left. Fictional data."
 imagenesReferenciales: true
 featured: true
 order: 11
