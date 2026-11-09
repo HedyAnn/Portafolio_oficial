@@ -9,8 +9,8 @@ tools: ["Figma", "Miro", "Notion", "YouTrack", "Slack", "HTML", "CSS y JavaScrip
 tags: ["Dashboards", "Data viz", "Retail"]
 contexto: "Plataforma de BI · SaaS de analítica retail, 2026"
 proyecto: "Plataforma de BI"
-cover: ../../assets/cases/meta-justa.png
-coverAlt: "Reporte Meta Justa: ranking de los 5 grupos con mejor cumplimiento, gráfico de barras de venta frente a meta por grupo y tabla de detalle con cumplimiento, meta, venta, horas, artículos, tickets y ticket promedio. Datos ficticios."
+cover: ../../assets/cases/meta-justa-mockup.webp
+coverAlt: "Mockup del Reporte de Meta Justa en un laptop: ranking de los 5 grupos con mejor cumplimiento, gráfico de venta frente a meta por grupo y detalle de holding; a la izquierda, sus beneficios: metas personalizadas, análisis de cumplimiento y visión por holding. Datos ficticios."
 imagenesReferenciales: true
 featured: true
 order: 4

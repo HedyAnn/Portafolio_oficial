@@ -9,8 +9,8 @@ tools: ["Figma", "Miro", "Notion", "YouTrack", "Slack", "HTML", "CSS and JavaScr
 tags: [Dashboards, Data viz, Retail]
 contexto: "BI platform · Retail analytics SaaS, 2026"
 proyecto: "BI platform"
-cover: ../../assets/cases/meta-justa.png
-coverAlt: "Fair Goal report: ranking of the 5 groups with the best attainment, bar chart of sales versus goal by group, and a detail table with attainment, goal, sales, hours, items, tickets and average ticket. Fictional data."
+cover: ../../assets/cases/meta-justa-mockup.webp
+coverAlt: "Mockup of the Fair Goal report on a laptop: ranking of the 5 groups with the best attainment, sales-versus-goal chart by group and holding detail; on the left, its benefits: personalized goals, attainment analysis and holding view. Fictional data."
 imagenesReferenciales: true
 featured: true
 order: 4
