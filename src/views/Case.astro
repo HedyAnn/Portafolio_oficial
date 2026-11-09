@@ -1,8 +1,8 @@
 ---
 import { render } from 'astro:content';
-import { Image } from 'astro:assets';
+import { Image, getImage } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { site } from '../site';
+import { site, withBase } from '../site';
 import type { CaseEntry } from '../cases';
 import { caseUrl, ui, url, type Lang } from '../i18n';
 
@@ -10,10 +10,16 @@ interface Props { lang: Lang; entry: CaseEntry; next?: CaseEntry }
 const { lang, entry, next } = Astro.props;
 const { title, summary, role, tools, year, origin, draft, behance, contexto, lead, imagenesReferenciales, cover, coverAlt, cover2, coverAlt2, cover3, coverAlt3, cover4, coverAlt4 } = entry.data;
 const { Content } = await render(entry);
+// Imágenes del caso; cada una tiene además una versión grande para verla ampliada
+const covers = await Promise.all(
+  ([[cover, coverAlt], [cover2, coverAlt2], [cover3, coverAlt3], [cover4, coverAlt4]] as const)
+    .filter(([src, alt]) => src && alt)
+    .map(async ([src, alt]) => ({ src: src!, alt: alt!, full: (await getImage({ src: src!, width: Math.min(src!.width, 2000), format: 'webp' })).src })),
+);
 const originLabel = ui[lang].origin[origin];
 const c = {
-  es: { crumbs: 'Ruta', projects: 'Proyectos', role: 'Rol', context: 'Contexto', tools: 'Herramientas', draft: 'Proyecto en redacción: el contenido final está en camino.', mockTitle: 'Imágenes referenciales.', mockText: 'Las pantallas de este caso son recreaciones con datos ficticios, no el producto real, para resguardar la confidencialidad de la plataforma y de sus clientes.', talk: 'Conversemos sobre este proyecto', next: 'Siguiente proyecto', behance: 'Ver proyecto completo en Behance', newTab: '(se abre en una pestaña nueva)' },
-  en: { crumbs: 'Breadcrumb', projects: 'Projects', role: 'Role', context: 'Context', tools: 'Tools', draft: 'Case study in progress: the full write-up is on its way.', mockTitle: 'Reference images.', mockText: 'The screens in this case are recreations with fictional data, not the real product, to protect the confidentiality of the platform and its clients.', talk: "Let's talk about this project", next: 'Next project', behance: 'See the full project on Behance', newTab: '(opens in a new tab)' },
+  es: { crumbs: 'Ruta', projects: 'Proyectos', role: 'Rol', context: 'Contexto', tools: 'Herramientas', draft: 'Proyecto en redacción: el contenido final está en camino.', mockTitle: 'Imágenes referenciales.', mockText: 'Las pantallas de este caso son recreaciones con datos ficticios, no el producto real, para resguardar la confidencialidad de la plataforma y de sus clientes.', zoom: 'Ampliar imagen', close: 'Cerrar imagen ampliada', talk: 'Conversemos sobre este proyecto', next: 'Siguiente proyecto', behance: 'Ver proyecto completo en Behance', newTab: '(se abre en una pestaña nueva)' },
+  en: { crumbs: 'Breadcrumb', projects: 'Projects', role: 'Role', context: 'Context', tools: 'Tools', draft: 'Case study in progress: the full write-up is on its way.', mockTitle: 'Reference images.', mockText: 'The screens in this case are recreations with fictional data, not the real product, to protect the confidentiality of the platform and its clients.', zoom: 'Enlarge image', close: 'Close enlarged image', talk: "Let's talk about this project", next: 'Next project', behance: 'See the full project on Behance', newTab: '(opens in a new tab)' },
 }[lang];
 ---
 
@@ -46,27 +52,17 @@ const c = {
         )}
       </header>
       <div class="case-body">
-        <aside class:list={['case-aside', { 'has-two': cover2 && coverAlt2 }]}>
-          {cover && coverAlt && (
+        <aside class:list={['case-aside', { 'has-two': covers.length > 1 }]}>
+          {covers.map(({ src, alt, full }, i) => (
             <figure class="cover">
-              <Image src={cover} alt={coverAlt} widths={[480, 720, 960, 1280]} sizes="(min-width: 900px) 44vw, 94vw" loading="eager" />
+              <button type="button" class="zoom" data-zoom={full} aria-label={`${c.zoom}: ${alt}`} aria-haspopup="dialog">
+                <Image src={src} alt={alt} widths={[480, 720, 960, 1280]} sizes="(min-width: 900px) 44vw, 94vw" loading={i === 0 ? 'eager' : 'lazy'} />
+                <span class="zoom-hint" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="18" height="18"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M15.5 15.5 20 20M10.5 7.5v6M7.5 10.5h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                </span>
+              </button>
             </figure>
-          )}
-          {cover2 && coverAlt2 && (
-            <figure class="cover">
-              <Image src={cover2} alt={coverAlt2} widths={[480, 720, 960, 1280]} sizes="(min-width: 900px) 44vw, 94vw" loading="lazy" />
-            </figure>
-          )}
-          {cover3 && coverAlt3 && (
-            <figure class="cover">
-              <Image src={cover3} alt={coverAlt3} widths={[480, 720, 960, 1280]} sizes="(min-width: 900px) 44vw, 94vw" loading="lazy" />
-            </figure>
-          )}
-          {cover4 && coverAlt4 && (
-            <figure class="cover">
-              <Image src={cover4} alt={coverAlt4} widths={[480, 720, 960, 1280]} sizes="(min-width: 900px) 44vw, 94vw" loading="lazy" />
-            </figure>
-          )}
+          ))}
           <dl class="ficha">
             <div><dt>{c.role}</dt><dd>{role.join(', ')}</dd></div>
             <div><dt>{c.context}</dt><dd>{contexto ?? `${originLabel}, ${year}`}</dd></div>
@@ -83,6 +79,13 @@ const c = {
       </footer>
     </div>
   </article>
+  <dialog class="lightbox" data-lightbox aria-label={c.zoom}>
+    <button type="button" class="lightbox-close" data-lightbox-close aria-label={c.close}>
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <img data-lightbox-img alt="" />
+  </dialog>
+  <script is:inline src={withBase('/js/lightbox.js')} defer></script>
 </BaseLayout>
 
 <style>
@@ -115,6 +118,20 @@ const c = {
   @media (min-width: 900px) { .ficha { grid-template-columns: 1fr; gap: var(--space-5); } }
   .ficha dt { color: var(--text-subtle); font-size: 0.875rem; }
   .ficha dd { margin: var(--space-1) 0 0; font-weight: 500; }
+  /* Imágenes ampliables */
+  .zoom { position: relative; display: block; width: 100%; padding: 0; border: 0; background: none; border-radius: var(--radius-md); cursor: zoom-in; }
+  .zoom:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+  .zoom-hint { position: absolute; right: 0.6rem; bottom: 0.6rem; display: grid; place-items: center; width: 2.1rem; height: 2.1rem; border-radius: 999px; background: rgb(15 11 26 / 0.72); color: #fff; opacity: 0.85; transition: opacity var(--duration-fast) var(--ease-out), transform var(--duration-fast) var(--ease-out); }
+  .zoom:hover .zoom-hint, .zoom:focus-visible .zoom-hint { opacity: 1; transform: scale(1.06); }
+  .lightbox { width: min(96vw, 1600px); max-width: none; max-height: 94vh; padding: 0; border: 0; border-radius: var(--radius-lg); background: transparent; overflow: visible; }
+  .lightbox::backdrop { background: rgb(8 6 15 / 0.86); }
+  .lightbox img { display: block; width: 100%; height: auto; max-height: 94vh; object-fit: contain; border-radius: var(--radius-lg); background: #f4f6f9; }
+  .lightbox-close { position: absolute; top: 0.6rem; right: 0.6rem; display: grid; place-items: center; width: 2.75rem; height: 2.75rem; border: 0; border-radius: 999px; background: var(--surface-raised); color: var(--text); box-shadow: var(--shadow-card); cursor: pointer; }
+  .lightbox-close:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+  @media (prefers-reduced-motion: no-preference) {
+    .lightbox[open] { animation: lb-in var(--duration-base) var(--ease-out); }
+    @keyframes lb-in { from { opacity: 0; transform: scale(0.97); } to { opacity: 1; transform: none; } }
+  }
   .mock-note { display: flex; gap: 0.75rem; align-items: flex-start; max-width: none; margin: 0; padding: 0.875rem 1rem; border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 12px; background: var(--surface); color: var(--text-muted); font-size: 0.9375rem; line-height: 1.5; }
   .mock-note svg { flex: none; margin-top: 0.15rem; color: var(--accent); }
   .mock-note strong { color: var(--text); }
