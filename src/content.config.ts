@@ -31,6 +31,8 @@ const schema = ({ image }: SchemaContext) =>
       coverAlt2: z.string().min(10).optional(),
       cover3: image().optional(),
       coverAlt3: z.string().min(10).optional(),
+      cover4: image().optional(),
+      coverAlt4: z.string().min(10).optional(),
       // Link opcional al proyecto publicado afuera (por ejemplo, Behance)
       behance: z.string().url().optional(),
       featured: z.boolean().default(false),

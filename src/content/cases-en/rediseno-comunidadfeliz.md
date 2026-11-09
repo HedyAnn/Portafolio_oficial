@@ -14,10 +14,12 @@ meta: "Academic · UX/UI Diploma, Coderhouse"
 behance: https://www.behance.net/gallery/253688295/Rediseno-ComunidadFeliz
 cover: ../../assets/cases/rediseno-comunidadfeliz-mockup.webp
 coverAlt: "Mockup of the ComunidadFeliz website redesign on a laptop: home page with the headline «Administra tu comunidad sin caos ni planillas», Cotizar and Solicitar Demo buttons, and figures for communities, users and countries; on the left, the project's goal, approach and outcome."
-cover2: ../../assets/cases/rediseno-comunidadfeliz-2.png
-coverAlt2: "Tree testing result for the current architecture in the task «find about us»: diagram of participants' paths and a chart where 70% did not complete the task."
-cover3: ../../assets/cases/rediseno-comunidadfeliz-3.png
-coverAlt3: "Design system: primary, blue, grey, yellow and red color palettes, each with shades from 900 to 50."
+cover2: ../../assets/cases/rediseno-comunidadfeliz-1.png
+coverAlt2: "Redesigned ComunidadFeliz home page: hero with the headline «Administra tu comunidad sin caos ni planillas», Cotizar and Solicitar Demo buttons, and figures for communities, users and countries."
+cover3: ../../assets/cases/rediseno-comunidadfeliz-2.png
+coverAlt3: "Tree testing result for the current architecture in the task «find about us»: diagram of participants' paths and a chart where 70% did not complete the task."
+cover4: ../../assets/cases/rediseno-comunidadfeliz-3.png
+coverAlt4: "Design system: primary, blue, grey, yellow and red color palettes, each with shades from 900 to 50."
 imagenesReferenciales: false
 featured: true
 order: 1
