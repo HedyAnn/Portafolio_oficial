@@ -8,12 +8,10 @@ role: ["UX/UI and Product Design: discovery, design, prototyping and follow-up t
 tools: ["Figma", "Miro", "Notion", "YouTrack", "Slack", "HTML", "CSS and JavaScript", "component and chart libraries", "Claude", "Codex"]
 tags: [B2B, Forms, Operations]
 proyecto: "BI platform"
-cover: ../../assets/cases/carga-de-turnos-1-con-sidebar.png
-coverAlt: "Shift loading overview: weekly loading status for 300 weeks, list of stores that need urgent attention, buttons to import and export shifts, and a table per store with the status of each week. Fictional data."
-cover2: ../../assets/cases/carga-de-turnos-2.png
-coverAlt2: "Store view: loading status of the weeks in the period, coverage per week, and daily detail with each day's coverage percentage and access to shift generation. Fictional data."
-cover3: ../../assets/cases/carga-de-turnos-3.png
-coverAlt3: "Shift generation panel: weekly grid per salesperson where morning, afternoon, full day or day-off shifts are assigned, with a shift selector, copy from another week and a daily coverage bar. Fictional data."
+cover: ../../assets/cases/carga-de-turnos-mockup-1.webp
+coverAlt: "Mockup of Shift Loading on a laptop: weekly loading status for 300 weeks, stores that need urgent attention, shift upload and download, and a table per store with the status of each week; on the left, its benefits: connection with other reports, greater accuracy and centralized management. Fictional data."
+cover2: ../../assets/cases/carga-de-turnos-mockup-2.webp
+coverAlt2: "Mockup of shift generation on a laptop: list of salespeople, weekly grid with morning, afternoon, full day or day-off shifts, daily coverage, a shift selector and copy from another week; on the left, its benefits: connection with other reports, greater accuracy and centralized management. Fictional data."
 imagenesReferenciales: true
 featured: true
 order: 3
