@@ -8,10 +8,8 @@ role: [Product Design, Discovery, Data model, Functional specification, Prototyp
 tools: ["Figma", "FigJam", "Stitch", "Miro", "Notion", "YouTrack", "Slack", "HTML", "CSS and JavaScript", "component and chart libraries", "Claude", "Codex", "GitHub"]
 tags: [Data & BI, Business rules, B2B]
 proyecto: "BI platform"
-cover: ../../assets/cases/carga-de-metas.png
-coverAlt: Store view of the goal loading module, with the daily goal vs. last year's sales chart, the period goal, the loaded days and the buttons to upload and download goals. Fictional data.
-cover2: ../../assets/cases/carga-de-metas-2.png
-coverAlt2: "Goals table by retail week, with one week expanded showing the day-by-day detail: sales goal, foot traffic, items per ticket, conversion rate, capture rate and average ticket. Fictional data."
+cover: ../../assets/cases/carga-de-metas-mockup.webp
+coverAlt: "Mockup of Goal Loading on a laptop: store view with the daily goal versus prior-year sales chart, the period goal, loaded days and buttons to upload and download goals; on the left, its benefits: immediate visibility, flexible loading and always-on reports. Fictional data."
 imagenesReferenciales: true
 featured: true
 order: 2
