@@ -10,10 +10,12 @@ tags: ["Heatmaps", "Data viz", "Tracking"]
 contexto: "Plataforma de Tracking · SaaS de analítica retail"
 proyecto: "Plataforma de Tracking"
 meta: "SaaS de analítica retail"
-cover: ../../assets/cases/heatmap-1v2.webp
-coverAlt: "Mapa de calor en vista agregada: los pisos de la tienda apilados en perspectiva con las zonas de mayor concentración de atenciones, y el resumen de visitantes únicos y retenidos por planta. Datos ficticios."
-cover2: ../../assets/cases/heatmap-2v2.webp
-coverAlt2: "Mapa de calor de la planta baja sobre el plano de la tienda, con las zonas de mayor actividad resaltadas y el selector de pisos a la izquierda. Datos ficticios."
+cover: ../../assets/cases/heatmap-mockup.webp
+coverAlt: "Mockup del mapa de calor en un laptop: pisos de la tienda apilados en perspectiva con las zonas de mayor concentración de atenciones, panel de plantas con visitantes únicos y retenidos, y control de opacidad; a la izquierda, sus beneficios: atenciones en tienda, tráfico de visitantes y tiendas de uno o varios pisos. Datos ficticios."
+cover2: ../../assets/cases/heatmap-1v2.webp
+coverAlt2: "Mapa de calor en vista agregada: los pisos de la tienda apilados en perspectiva con las zonas de mayor concentración de atenciones, y el resumen de visitantes únicos y retenidos por planta. Datos ficticios."
+cover3: ../../assets/cases/heatmap-2v2.webp
+coverAlt3: "Mapa de calor de la planta baja sobre el plano de la tienda, con las zonas de mayor actividad resaltadas y el selector de pisos a la izquierda. Datos ficticios."
 imagenesReferenciales: true
 featured: true
 order: 11
