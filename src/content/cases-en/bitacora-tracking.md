@@ -10,10 +10,10 @@ tags: ["Tracking", "Timeline", "Configuration"]
 contexto: "Tracking platform · Retail analytics SaaS"
 proyecto: "Tracking platform"
 meta: "Retail analytics SaaS"
-cover: ../../assets/cases/bitacora-1.webp
-coverAlt: "Store zone activity log: January-to-October timeline where each zone shows which category it had in each period, with filters by store, zone and floor. Fictional data."
-cover2: ../../assets/cases/bitacora-2.webp
-coverAlt2: "Activity log configuration: available categories, table of zones with their current category, and a side panel to register a category change with a start date and the zone's history. Fictional data."
+cover: ../../assets/cases/bitacora-mockup-1.webp
+coverAlt: "Mockup of the activity log on a laptop: January-to-October timeline with the brand displayed in each store zone, with filters by store, zone and floor; on the left, its description: recording and tracking the type of product displayed in each zone. Fictional data."
+cover2: ../../assets/cases/bitacora-mockup-2.webp
+coverAlt2: "Mockup of the activity log configuration on a laptop: categories, table of zones with their current category, and a panel to register a change with a start date and the zone's history; on the left, its benefits: zone management, change history and analysis with context. Fictional data."
 imagenesReferenciales: true
 featured: true
 order: 10
